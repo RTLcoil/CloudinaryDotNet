@@ -3194,7 +3194,7 @@ namespace CloudinaryDotNet.Test
             AuthToken t = new AuthToken(TOKEN_KEY);
             t.StartTime(1111111111).Acl("/image/*").Duration(300);
             string url = m_cloudinary.Api.Url.AuthToken(t).Signed(true).ResourceType("image").Version("1486020273").BuildImageTag("sample.jpg");
-            Assert.AreEqual("<img src=\"http://res.cloudinary.com/rtlstudio/image/v1486020273/sample.jpg?__cld_token__=st=1111111111~exp=1111111411~acl=/image/*~hmac=e9a0c51530a2a5080be60f6defa0cde8d1f99c1c0787ec7cd30e1f60be65645a\"/>", url);
+            Assert.AreEqual("<img src=\"http://res.cloudinary.com/rtlstudio/image/v1486020273/sample.jpg?__cld_token__=st=1111111111~exp=1111111411~acl=/image/*~hmac=225c64af58559f2c3cbef6785a75907e4a866bb7052e934f4ba55ce38c2888cd\"/>", url);
         }
     }
 }
