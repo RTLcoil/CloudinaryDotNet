@@ -1,6 +1,4 @@
-﻿using CloudinaryDotNet;
-using CloudinaryDotNet.Actions;
-using Coudinary.NetCoreShared;
+﻿using CloudinaryDotNet.Actions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -180,21 +178,6 @@ namespace CloudinaryDotNet
                 return Url
                     .ResourceType(Constants.RESOURCE_TYPE_IMAGE)
                     .Action(Constants.ACTION_NAME_FETCH)
-                    .UseRootPath(UseRootPath)
-                    .Suffix(Suffix);
-            }
-        }
-
-        /// <summary>
-        /// Default URL for working with fetched images
-        /// </summary>
-        public Url UrlImgFetch
-        {
-            get
-            {
-                return Url
-                    .ResourceType("image")
-                    .Action("fetch")
                     .UseRootPath(UseRootPath)
                     .Suffix(Suffix);
             }
