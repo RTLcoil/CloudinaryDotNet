@@ -37,6 +37,8 @@ namespace CloudinaryDotNet
         protected string m_source;
         protected string m_fallbackContent;
         protected bool m_useSubDomain;
+        protected bool m_clientHints = false;
+
         protected Dictionary<string, Transformation> m_sourceTransforms;
         protected List<string> m_customParts = new List<string>();
         protected Transformation m_posterTransformation;
@@ -168,6 +170,12 @@ namespace CloudinaryDotNet
             return this;
         }
 
+        public Url ClientHints(bool clientHints)
+        {
+            m_clientHints = clientHints;
+            return this;
+        }
+
         public Url Transform(Transformation transformation)
         {
             m_transformation = transformation;
@@ -293,7 +301,7 @@ namespace CloudinaryDotNet
             if (!string.IsNullOrEmpty(Transformation.HtmlHeight))
                 dict.Add("height", Transformation.HtmlHeight);
 
-            if (Transformation.HiDpi || Transformation.IsResponsive)
+            if (!m_clientHints && (Transformation.HiDpi || Transformation.IsResponsive))
             {
                 var extraClass = Transformation.IsResponsive ? "cld-responsive" : "cld-hidpi";
                 var userClass = dict["class"];
