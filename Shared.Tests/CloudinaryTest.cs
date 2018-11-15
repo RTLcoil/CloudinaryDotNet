@@ -1208,12 +1208,32 @@ namespace CloudinaryDotNet.Test
 
             var result = m_cloudinary.ListResourcesByPrefix(publicId, true, true, true);
 
-            //Assert.IsTrue(result.Resources.Where(res => res.PublicId.StartsWith("testlist")).Count() == result.Resources.Count());
             Assert.IsTrue(
                 result
                 .Resources
-                .Where(res => (res.Context == null ? false : res.Context["custom"]["context"].ToString() == "abc"))
-                .Count() > 0);
+                .Any(res => res.Context == null ? false : res.Context["custom"]["context"].ToString() == "abc"));
+        }
+
+        [Test]
+        public void TestListResourcesByPrefixAndResourceType()
+        {
+            var uploadParams = new VideoUploadParams()
+            {
+                File = new FileDescription(m_testVideoPath),
+                Tags = m_apiTag,
+                Context = new StringDictionary("context=videoTest")
+            };
+
+            var uploadResult = m_cloudinary.Upload(uploadParams);
+
+            var result = m_cloudinary.ListResourcesByPrefix(uploadResult.PublicId, false, true, false, resourceType: ResourceType.Video);
+            Assert.IsTrue(
+                result
+                .Resources
+                .Any(res => res.Context == null ? false : res.Context["custom"]["context"].ToString() == "videoTest"));
+
+            result = m_cloudinary.ListResourcesByPrefix(uploadResult.PublicId, resourceType: ResourceType.Video);
+            Assert.IsTrue(result.Resources.Any(r => r.PublicId == uploadResult.PublicId));
         }
 
         [Test]

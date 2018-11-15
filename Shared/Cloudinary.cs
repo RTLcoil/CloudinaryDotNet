@@ -689,14 +689,17 @@ namespace CloudinaryDotNet
         /// Lists resources by prefix.
         /// </summary>
         /// <param name="prefix">Public identifier prefix.</param>
-        /// <param name="type">Resource type.</param>
+        /// <param name="type">Storage type.</param>
         /// <param name="nextCursor">Starting position.</param>
+        /// <param name="resourceType">Resource type</param>
         /// <returns></returns>
-        public ListResourcesResult ListResourcesByPrefix(string prefix, string type = "upload", string nextCursor = null)
+        public ListResourcesResult ListResourcesByPrefix(string prefix, string type = "upload", string nextCursor = null,
+                                                         ResourceType resourceType = ResourceType.Image)
         {
             return ListResources(new ListResourcesByPrefixParams()
             {
                 Type = type,
+                ResourceType = resourceType,
                 Prefix = prefix,
                 NextCursor = nextCursor
             });
@@ -708,11 +711,14 @@ namespace CloudinaryDotNet
         /// <param name="prefix">Public identifier prefix.</param>
         /// <param name="tags">Whether to include tags in result.</param>
         /// <param name="context">Whether to include context in result.</param>
-        /// <param name="type">Resource type.</param>
+        /// <param name="type">Storage type.</param>
         /// <param name="moderations">If true, include moderation status for each resource.</param>
         /// <param name="nextCursor">Starting position.</param>
+        /// <param name="resourceType">Resource type</param>
         /// <returns></returns>
-        public ListResourcesResult ListResourcesByPrefix(string prefix, bool tags, bool context, bool moderations, string type = "upload", string nextCursor = null)
+        public ListResourcesResult ListResourcesByPrefix(string prefix, bool tags, bool context, bool moderations,
+                                                         string type = "upload", string nextCursor = null, 
+                                                         ResourceType resourceType = ResourceType.Image)
         {
             return ListResources(new ListResourcesByPrefixParams()
             {
@@ -720,6 +726,7 @@ namespace CloudinaryDotNet
                 Context = context,
                 Moderations = moderations,
                 Type = type,
+                ResourceType = resourceType,
                 Prefix = prefix,
                 NextCursor = nextCursor
             });
