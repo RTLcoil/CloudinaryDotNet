@@ -18,7 +18,7 @@ using Newtonsoft.Json.Linq;
 namespace CloudinaryDotNet
 {
     /// <summary>
-    /// Technological layer to work with cloudinary API
+    /// Technological layer to work with cloudinary API.
     /// </summary>
     public class Api : ApiShared
     {
@@ -28,44 +28,43 @@ namespace CloudinaryDotNet
             (url) => new HttpRequestMessage {RequestUri = new Uri(url)};
 
         /// <summary>
-        /// Default parameterless constructor.
-        /// Assumes that environment variable CLOUDINARY_URL is set.
+        /// Default parameterless constructor. Assumes that environment variable CLOUDINARY_URL is set.
         /// </summary>
-        public Api() : base()
-        {
-
+        public Api() : base() 
+        { 
         }
 
         /// <summary>
-        /// Parameterized constructor
+        /// Instantiate the cloudinary <see cref="Api"/> object with cloudinary Url.
         /// </summary>
-        /// <param name="cloudinaryUrl">Cloudinary URL</param>
+        /// <param name="cloudinaryUrl">Cloudinary URL.</param>
         public Api(string cloudinaryUrl) : base(cloudinaryUrl)
         {
         }
 
         /// <summary>
-        /// Parametrized constructor
+        /// Instantiate the cloudinary <see cref="Api"/> object with initial parameters.
         /// </summary>
-        /// <param name="account">Cloudinary account</param>
-        /// <param name="usePrivateCdn">Whether to use private Content Delivery Network</param>
-        /// <param name="privateCdn">Private Content Delivery Network</param>
+        /// <param name="account">Cloudinary account.</param>
+        /// <param name="usePrivateCdn">Whether to use private Content Delivery Network.</param>
+        /// <param name="privateCdn">Private Content Delivery Network.</param>
         /// <param name="shortenUrl">Whether to use shorten url when possible.</param>
         /// <param name="cSubDomain">if set to <c>true</c> [c sub domain].</param>
-        public Api(Account account, bool usePrivateCdn, string privateCdn, bool shortenUrl, bool cSubDomain) : base(account, usePrivateCdn, privateCdn, shortenUrl, cSubDomain)
+        public Api(Account account, bool usePrivateCdn, string privateCdn, bool shortenUrl, bool cSubDomain) 
+            : base(account, usePrivateCdn, privateCdn, shortenUrl, cSubDomain)
         {
         }
 
         /// <summary>
-        /// Parametrized constructor
+        /// Instantiate the cloudinary <see cref="Api"/> object with account.
         /// </summary>
-        /// <param name="account">Cloudinary account</param>
+        /// <param name="account">Cloudinary account.</param>
         public Api(Account account) : base(account)
         {
         }
 
         /// <summary>
-        /// Initializes the <see cref="Api"/> class.
+        /// Default static parameterless constructor. Instantiate the cloudinary <see cref="Api"/> object.
         /// </summary>
         static Api()
         {
@@ -78,14 +77,14 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Custom call to cloudinary API
+        /// Custom call to cloudinary API.
         /// </summary>
-        /// <param name="method">HTTP method of call</param>
-        /// <param name="url">URL to call</param>
-        /// <param name="parameters">Dictionary of call parameters (can be null)</param>
-        /// <param name="file">File to upload (must be null for non-uploading actions)</param>
-        /// <param name="extraHeaders">Headers to add to the request</param>
-        /// <returns>HTTP response on call</returns>
+        /// <param name="method">HTTP method of call.</param>
+        /// <param name="url">URL to call.</param>
+        /// <param name="parameters">Dictionary of call parameters (can be null).</param>
+        /// <param name="file">File to upload (must be null for non-uploading actions).</param>
+        /// <param name="extraHeaders">Headers to add to the request.</param>
+        /// <returns>HTTP response on call.</returns>
         public HttpResponseMessage Call(HttpMethod method, string url, SortedDictionary<string, object> parameters, FileDescription file, Dictionary<string, string> extraHeaders = null)
         {
             var request = RequestBuilder(url);
@@ -238,6 +237,11 @@ namespace CloudinaryDotNet
             return content;
         }
 
+        /// <summary>
+        /// Check file path for callback url.
+        /// </summary>
+        /// <param name="path">File path for to check.</param>
+        /// <returns>Provided path if it matches the callback url format.</returns>
         public override string BuildCallbackUrl(string path = "")
         {
             if (!Regex.IsMatch(path.ToLower(), "^https?:/.*"))
@@ -248,23 +252,28 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Builds HTML form
+        /// Build HTML form.
         /// </summary>
-        /// <returns>HTML form</returns>
+        /// <returns>HTML form.</returns>
         public string BuildUnsignedUploadForm(string field, string preset, string resourceType, SortedDictionary<string, object> parameters = null, Dictionary<string, string> htmlOptions = null)
         {
             return BuildUploadForm(field, resourceType, BuildUnsignedUploadParams(preset, parameters), htmlOptions);
         }
 
         /// <summary>
-        /// Builds HTML form
+        /// Build HTML form.
         /// </summary>
-        /// <returns>HTML form</returns>
+        /// <returns>HTML form.</returns>
         public string BuildUploadForm(string field, string resourceType, SortedDictionary<string, object> parameters = null, Dictionary<string, string> htmlOptions = null)
         {
             return BuildUploadFormShared(field, resourceType, parameters, htmlOptions);
         }
 
+        /// <summary>
+        /// Encode to a representation that is unambiguous and universally accepted by web browsers and servers.
+        /// </summary>
+        /// <param name="value">The url to encode.</param>
+        /// <returns>Encoded url.</returns>
         protected override string EncodeApiUrl(string value)
         {
             return HtmlEncoder.Default.Encode(value);
@@ -327,10 +336,10 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Parses HTTP response and creates new instance of this class
+        /// Parses HTTP response and creates new instance of this class.
         /// </summary>
-        /// <param name="response">HTTP response</param>
-        /// <returns>New instance of this class</returns>
+        /// <param name="response">HTTP response.</param>
+        /// <returns>New instance of this class.</returns>
         internal static T Parse<T>(Object response) where T : BaseResult, new()
         {
             if (response == null)
@@ -381,6 +390,16 @@ namespace CloudinaryDotNet
             return result;
         }
 
+        /// <summary>
+        /// Call the Cloudinary API and parse HTTP response.
+        /// </summary>
+        /// <typeparam name="T">The type of the parsed response.</typeparam>
+        /// <param name="method">HTTP method.</param>
+        /// <param name="url">A generated Url.</param>
+        /// <param name="parameters">A dictionary of parameters in cloudinary notation.</param>
+        /// <param name="file">The file to upload.</param>
+        /// <param name="extraHeaders">The extra headers to pass into the request.</param>
+        /// <returns>Instance of the parsed response from the cloudinary API.</returns>
         public override T CallAndParse<T>(HttpMethod method, string url, SortedDictionary<string, object> parameters, FileDescription file,
             Dictionary<string, string> extraHeaders = null)
         {

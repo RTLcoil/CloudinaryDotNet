@@ -7,16 +7,19 @@ using Newtonsoft.Json.Linq;
 
 namespace CloudinaryDotNet.Actions
 {
+    /// <summary>
+    /// Parsed response after Upload mappings manipulation.
+    /// </summary>
     [DataContract]
     public class UploadMappingResults : BaseResult
     {
         /// <summary>
-        /// Result of CRUD operations
+        /// Result of CRUD operations.
         /// </summary>
         public string Message { get; protected set; }
 
         /// <summary>
-        /// Returned upload mappings
+        /// Returned upload mappings.
         /// </summary>
         public Dictionary<string, string> Mappings { get; protected set; }
 

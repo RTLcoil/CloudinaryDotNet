@@ -13,30 +13,50 @@ namespace CloudinaryDotNet
     /// </summary>
     public partial class Cloudinary
     {
+        /// <summary>
+        /// Resource type 'image'.
+        /// </summary>
         protected const string RESOURCE_TYPE_IMAGE = "image";
+
+        /// <summary>
+        /// Action 'generate_archive'.
+        /// </summary>
         protected const string ACTION_GENERATE_ARCHIVE = "generate_archive";
+
+        /// <summary>
+        /// Instance of <see cref="Random"/> class.
+        /// </summary>
         protected static Random m_random = new Random();
 
+        /// <summary>
+        /// Default chunk (buffer) size for upload large files.
+        /// </summary>
         protected const int DEFAULT_CHUNK_SIZE = 20 * 1024 * 1024; // 20 MB
 
+        /// <summary>
+        /// Cloudinary <see cref="Api"/> object.
+        /// </summary>
         protected Api m_api;
 
         /// <summary>
-        /// API object that used by this instance
+        /// API object that used by this instance.
         /// </summary>
         public Api Api
         {
             get { return m_api; }
         }
 
+        /// <summary>
+        /// Get the advanced search provider used by the Cloudinary instance.
+        /// </summary>
+        /// <returns></returns>
         public Search Search()
         {
             return new Search(m_api);
         }
 
         /// <summary>
-        /// Default parameterless constructor.
-        /// Assumes that environment variable CLOUDINARY_URL is set.
+        /// Default parameterless constructor. Assumes that environment variable CLOUDINARY_URL is set.
         /// </summary>
         public Cloudinary()
         {
@@ -44,32 +64,32 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Parameterized constructor
+        /// Instantiate the <see cref="Cloudinary"/> object with cloudinary Url.
         /// </summary>
-        /// <param name="cloudinaryUrl">Cloudinary URL</param>
+        /// <param name="cloudinaryUrl">Cloudinary URL.</param>
         public Cloudinary(string cloudinaryUrl)
         {
             m_api = new Api(cloudinaryUrl);
         }
 
         /// <summary>
-        /// Parameterized constructor
+        /// Instantiate the <see cref="Cloudinary"/> object with cloudinary account.
         /// </summary>
-        /// <param name="account">Cloudinary account</param>
+        /// <param name="account">Cloudinary account.</param>
         public Cloudinary(Account account)
         {
             m_api = new Api(account);
         }
 
         /// <summary>
-        /// Gets URL to download private image
+        /// Gets URL to download private image.
         /// </summary>
         /// <param name="publicId">The image public ID.</param>
         /// <param name="attachment">Whether to download image as attachment (optional).</param>
         /// <param name="format">Format to download (optional).</param>
         /// <param name="type">The type (optional).</param>
         /// <returns></returns>
-        /// <exception cref="System.ArgumentException">publicId can't be null</exception>
+        /// <exception cref="System.ArgumentException">publicId can't be null.</exception>
         public string DownloadPrivate(string publicId, bool? attachment = null, string format = "", string type = "")
         {
             if (String.IsNullOrEmpty(publicId))
@@ -99,7 +119,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Gets URL to download tag cloud as ZIP package
+        /// Gets URL to download tag cloud as ZIP package.
         /// </summary>
         /// <param name="tag">The tag.</param>
         /// <param name="transform">The transformation.</param>
@@ -141,10 +161,10 @@ namespace CloudinaryDotNet
 
 
         /// <summary>
-        ///  Return Url on archive file
+        ///  Return Url on archive file.
         /// </summary>
-        /// <param name="parameters">Parameters of generated archive</param>
-        /// <returns>Url on archive file</returns>
+        /// <param name="parameters">Parameters of generated archive.</param>
+        /// <returns>Url on archive file.</returns>
         public string DownloadArchiveUrl(ArchiveParams parameters)
         {
             parameters.Mode(ArchiveCallMode.Download);
@@ -172,7 +192,7 @@ namespace CloudinaryDotNet
         /// <summary>
         /// Publish resources by tag.
         /// </summary>
-        /// <param name="prefix">The tag for publishing resources.</param>
+        /// <param name="tag">All resources with the given tag will be published.</param>
         /// <param name="parameters">Parameters for publishing of resources.</param>
         /// <returns></returns>
         public PublishResourceResult PublishResourceByTag(string tag, PublishResourceParams parameters)
@@ -180,6 +200,12 @@ namespace CloudinaryDotNet
             return PublishResource("tag", tag, parameters);
         }
 
+        /// <summary>
+        /// Publish resource by Id.
+        /// </summary>
+        /// <param name="tag">Not used.</param>
+        /// <param name="parameters">Parameters for publishing of resources.</param>
+        /// <returns>Structure with the results of publishing.</returns>
         public PublishResourceResult PublishResourceByIds(string tag, PublishResourceParams parameters)
         {
             return PublishResource(string.Empty, string.Empty, parameters);
@@ -214,26 +240,46 @@ namespace CloudinaryDotNet
             return m_api.CallApi<UpdateResourceAccessModeResult>(HttpMethod.POST, url.BuildUrl(), parameters, null);
         }
 
+        /// <summary>
+        /// Update access mode for the resources selected by tag.
+        /// </summary>
+        /// <param name="tag">Update all resources with the given tag (up to a maximum 
+        /// of 100 matching original resources).</param>
+        /// <param name="parameters">Parameters for updating of resources.</param>
+        /// <returns>Structure with the results of update.</returns>
         public UpdateResourceAccessModeResult UpdateResourceAccessModeByTag(string tag, UpdateResourceAccessModeParams parameters)
         {
             return UpdateResourceAccessMode(Constants.TAG_PARAM_NAME, tag, parameters);
         }
 
+        /// <summary>
+        /// Update access mode for the resources selected by prefix.
+        /// </summary>
+        /// <param name="prefix">Update all resources where the public ID starts with the given prefix (up to a maximum
+        /// of 100 matching original resources).</param>
+        /// <param name="parameters">Parameters for updating of resources.</param>
+        /// <returns>Structure with the results of update.</returns>
         public UpdateResourceAccessModeResult UpdateResourceAccessModeByPrefix(string prefix, UpdateResourceAccessModeParams parameters)
         {
             return UpdateResourceAccessMode(Constants.PREFIX_PARAM_NAME, prefix, parameters);
         }
 
+        /// <summary>
+        /// Update access mode for the resources selected by public ids.
+        /// </summary>
+        /// <param name="parameters">Parameters for updating of resources. Update all resources with the given public IDs 
+        /// (array of up to 100 public_ids).</param>
+        /// <returns>Structure with the results of update.</returns>
         public UpdateResourceAccessModeResult UpdateResourceAccessModeByIds(UpdateResourceAccessModeParams parameters)
         {
             return UpdateResourceAccessMode(string.Empty, string.Empty, parameters);
         }
 
         /// <summary>
-        /// Manage tag assignments
+        /// Manage tag assignments.
         /// </summary>
-        /// <param name="parameters">Parameters of tag management</param>
-        /// <returns>Results of tags management</returns>
+        /// <param name="parameters">Parameters of tag management.</param>
+        /// <returns>Results of tags management.</returns>
         public TagResult Tag(TagParams parameters)
         {
             string uri = m_api.ApiUrlV
@@ -245,10 +291,10 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Manage context assignments
+        /// Manage context assignments.
         /// </summary>
-        /// <param name="parameters">Parameters of context management</param>
-        /// <returns>Results of contexts management</returns>
+        /// <param name="parameters">Parameters of context management.</param>
+        /// <returns>Results of contexts management.</returns>
         public ContextResult Context(ContextParams parameters)
         {
             string uri = m_api.ApiUrlImgUpV.Action(Constants.CONTEXT_MANAGMENT).BuildUrl();
@@ -256,6 +302,11 @@ namespace CloudinaryDotNet
             return m_api.CallApi<ContextResult>(HttpMethod.POST, uri, parameters, null);
         }
 
+        /// <summary>
+        /// Delete derived resources by the given transformation (should be specified in parameters).
+        /// </summary>
+        /// <param name="parameters">Parameters to delete derived resources.</param>
+        /// <returns>Parsed result of deletion derived resources.</returns>
         public DelDerivedResResult DeleteDerivedResourcesByTransform(DelDerivedResParams parameters)
         {
             UrlBuilder urlBuilder = new UrlBuilder(
@@ -268,10 +319,10 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Create archive and store it as a raw resource in your Cloudinary
+        /// Create archive and store it as a raw resource in your Cloudinary account.
         /// </summary>
-        /// <param name="parameters">Parameters of new generated archive</param>
-        /// <returns>Result of operation</returns>
+        /// <param name="parameters">Parameters of new generated archive.</param>
+        /// <returns>Parsed result of creating the archive.</returns>
         public ArchiveResult CreateArchive(ArchiveParams parameters)
         {
             Url url = m_api.ApiUrlV.ResourceType(RESOURCE_TYPE_IMAGE).Action(ACTION_GENERATE_ARCHIVE);
@@ -284,10 +335,10 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Create a zip archive and store it as a raw resource in your Cloudinary
+        /// Create a zip archive and store it as a raw resource in your Cloudinary account.
         /// </summary>
-        /// <param name="parameters">Parameters of the new generated zip archive</param>
-        /// <returns>Result of operation</returns>
+        /// <param name="parameters">Parameters of the new generated zip archive.</param>
+        /// <returns>Parsed result of creating the archive.</returns>
         public ArchiveResult CreateZip(ArchiveParams parameters)
         {
             parameters.TargetFormat(ArchiveFormat.Zip);
@@ -295,11 +346,13 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// This method can be used to force refresh facebook and twitter profile pictures. The response of this method includes the image's version. Use this version to bypass previously cached CDN copies.
-        /// Also it can be used to generate transformed versions of an uploaded image. This is useful when Strict Transformations are allowed for your account and you wish to create custom derived images for already uploaded images.
+        /// This method can be used to force refresh facebook and twitter profile pictures. The response of this method
+        /// includes the image's version. Use this version to bypass previously cached CDN copies. Also it can be used 
+        /// to generate transformed versions of an uploaded image. This is useful when Strict Transformations are 
+        /// allowed for your account and you wish to create custom derived images for already uploaded images.
         /// </summary>
-        /// <param name="parameters">The parameters.</param>
-        /// <returns></returns>
+        /// <param name="parameters">The parameters for explicit method.</param>
+        /// <returns>Parsed response after a call of Explicit method.</returns>
         public ExplicitResult Explicit(ExplicitParams parameters)
         {
             string uri = m_api.ApiUrlV
@@ -315,7 +368,7 @@ namespace CloudinaryDotNet
         /// Upload presets allow you to define the default behavior for your uploads, instead of receiving these as parameters during the upload request itself. Upload presets have precedence over client-side upload parameters.
         /// </summary>
         /// <param name="parameters">Parameters of the upload preset.</param>
-        /// <returns></returns>
+        /// <returns>Parsed response after manipulation of upload presets.</returns>
         public UploadPresetResult CreateUploadPreset(UploadPresetParams parameters)
         {
             string url = m_api.ApiUrlV.
@@ -330,7 +383,7 @@ namespace CloudinaryDotNet
         /// Every update overwrites all the preset settings.
         /// </summary>
         /// <param name="parameters">New parameters for upload preset.</param>
-        /// <returns></returns>
+        /// <returns>Parsed response after manipulation of upload presets.</returns>
         public UploadPresetResult UpdateUploadPreset(UploadPresetParams parameters)
         {
             var paramsCopy = (UploadPresetParams)parameters.Copy();
@@ -348,7 +401,7 @@ namespace CloudinaryDotNet
         /// Gets the upload preset.
         /// </summary>
         /// <param name="name">Name of the upload preset.</param>
-        /// <returns></returns>
+        /// <returns>Upload preset details.</returns>
         public GetUploadPresetResult GetUploadPreset(string name)
         {
             var url = m_api.ApiUrlV
@@ -362,7 +415,7 @@ namespace CloudinaryDotNet
         /// <summary>
         /// Lists upload presets.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Parsed result of upload presets listing.</returns>
         public ListUploadPresetsResult ListUploadPresets(string nextCursor = null)
         {
             return ListUploadPresets(new ListUploadPresetsParams() { NextCursor = nextCursor });
@@ -371,7 +424,8 @@ namespace CloudinaryDotNet
         /// <summary>
         /// Lists upload presets.
         /// </summary>
-        /// <returns></returns>
+        /// <param name="parameters">Parameters to list upload presets.</param>
+        /// <returns>Parsed result of upload presets listing.</returns>
         public ListUploadPresetsResult ListUploadPresets(ListUploadPresetsParams parameters)
         {
             UrlBuilder urlBuilder = new UrlBuilder(
@@ -387,7 +441,7 @@ namespace CloudinaryDotNet
         /// Deletes the upload preset.
         /// </summary>
         /// <param name="name">Name of the upload preset.</param>
-        /// <returns></returns>
+        /// <returns>Result of upload preset deletion.</returns>
         public DeleteUploadPresetResult DeleteUploadPreset(string name)
         {
             var url = m_api.ApiUrlV
@@ -432,7 +486,7 @@ namespace CloudinaryDotNet
         /// <summary>
         /// Uploads a video file to cloudinary.
         /// </summary>
-        /// <param name="parameters">Parameters of video uploading .</param>
+        /// <param name="parameters">Parameters of video uploading.</param>
         /// <returns>Results of video uploading.</returns>
         public VideoUploadResult Upload(VideoUploadParams parameters)
         {
@@ -442,9 +496,10 @@ namespace CloudinaryDotNet
         /// <summary>
         /// Uploads a file to cloudinary.
         /// </summary>
-        /// <param name="resourceType">Resource type ("image", "raw", "video", "auto")</param>
+        /// <param name="resourceType">Resource type ("image", "raw", "video", "auto").</param>
         /// <param name="parameters">Upload parameters.</param>
         /// <param name="fileDescription">File description.</param>
+        /// <returns>Results of the raw file uploading.</returns>
         public RawUploadResult Upload(string resourceType, IDictionary<string, object> parameters, FileDescription fileDescription)
         {
             string uri = m_api.ApiUrlV.Action(Constants.ACTION_NAME_UPLOAD).ResourceType(resourceType).BuildUrl();
@@ -463,6 +518,7 @@ namespace CloudinaryDotNet
         /// <summary>
         /// Gets list of folders in the root.
         /// </summary>
+        /// <returns>Parsed result of folders listing.</returns>
         public GetFoldersResult RootFolders()
         {
             return m_api.CallApi<GetFoldersResult>(HttpMethod.GET, m_api.ApiUrlV.Add("folders").BuildUrl(), null, null);
@@ -471,6 +527,8 @@ namespace CloudinaryDotNet
         /// <summary>
         /// Get list of subfolders in a specified folder.
         /// </summary>
+        /// <param name="folder">The folder name.</param>
+        /// <returns>Parsed result of folders listing.</returns>
         public GetFoldersResult SubFolders(string folder)
         {
             if (String.IsNullOrEmpty(folder))
@@ -479,6 +537,10 @@ namespace CloudinaryDotNet
             return m_api.CallApi<GetFoldersResult>(HttpMethod.GET, m_api.ApiUrlV.Add("folders").Add(folder).BuildUrl(), null, null);
         }
 
+        /// <summary>
+        /// Get the Cloudinary account usage details.
+        /// </summary>
+        /// <returns>The report on the status of your Cloudinary account usage details.</returns>
         public UsageResult GetUsage()
         {
             string uri = m_api.ApiUrlV.Action("usage").BuildUrl();
@@ -491,6 +553,7 @@ namespace CloudinaryDotNet
         /// </summary>
         /// <param name="parameters">Parameters of file uploading.</param>
         /// <param name="type">The type ("raw" or "auto", last by default).</param>
+        /// <returns>Parsed result of the raw file uploading.</returns>
         public RawUploadResult Upload(RawUploadParams parameters, string type = "auto")
         {
             string uri = m_api.ApiUrlImgUpV.ResourceType(type).BuildUrl();
@@ -523,21 +586,46 @@ namespace CloudinaryDotNet
             return UploadLarge<RawUploadResult>(parameters, bufferSize);
         }
 
+        /// <summary>
+        /// Uploads large raw file to cloudinary by dividing it to chunks.
+        /// </summary>
+        /// <param name="parameters">Parameters of file uploading.</param>
+        /// <param name="bufferSize">Chunk (buffer) size (20 MB by default).</param>
+        /// <returns>Parsed result of uploading.</returns>
         public RawUploadResult UploadLarge(RawUploadParams parameters, int bufferSize = DEFAULT_CHUNK_SIZE)
         {
             return UploadLarge<RawUploadResult>(parameters, bufferSize);
         }
 
+        /// <summary>
+        /// Uploads large image file to cloudinary by dividing it to chunks.
+        /// </summary>
+        /// <param name="parameters">Parameters of file uploading.</param>
+        /// <param name="bufferSize">Chunk (buffer) size (20 MB by default).</param>
+        /// <returns>Parsed result of uploading.</returns>
         public ImageUploadResult UploadLarge(ImageUploadParams parameters, int bufferSize = DEFAULT_CHUNK_SIZE)
         {
             return UploadLarge<ImageUploadResult>(parameters, bufferSize);
         }
 
+        /// <summary>
+        /// Uploads large video file to cloudinary by dividing it to chunks.
+        /// </summary>
+        /// <param name="parameters">Parameters of file uploading.</param>
+        /// <param name="bufferSize">Chunk (buffer) size (20 MB by default).</param>
+        /// <returns>Parsed result of uploading.</returns>
         public VideoUploadResult UploadLarge(VideoUploadParams parameters, int bufferSize = DEFAULT_CHUNK_SIZE)
         {
             return UploadLarge<VideoUploadResult>(parameters, bufferSize);
         }
 
+        /// <summary>
+        /// Chunked resource upload.
+        /// </summary>
+        /// <param name="parameters">Parameters of file uploading.</param>
+        /// <param name="bufferSize">Chunk (buffer) size (20 MB by default).</param>
+        /// <param name="isRaw">Whether the file is raw.</param>
+        /// <returns>Parsed result of uploading.</returns>        
         [Obsolete("Use UploadLarge(parameters, bufferSize) instead.")]
         public UploadResult UploadLarge(BasicRawUploadParams parameters, int bufferSize = DEFAULT_CHUNK_SIZE, bool isRaw = false)
         {
@@ -551,6 +639,13 @@ namespace CloudinaryDotNet
             }
         }
 
+        /// <summary>
+        /// Chunked resource upload.
+        /// </summary>
+        /// <typeparam name="T">The type of result of upload.</typeparam>
+        /// <param name="parameters">Parameters of file uploading.</param>
+        /// <param name="bufferSize">Chunk (buffer) size (20 MB by default).</param>
+        /// <returns>Parsed result of uploading.</returns>
         public T UploadLarge<T>(BasicRawUploadParams parameters, int bufferSize = DEFAULT_CHUNK_SIZE) where T : UploadResult, new()
         {
             if (parameters == null)
@@ -607,7 +702,7 @@ namespace CloudinaryDotNet
         /// <param name="fromPublicId">Old identifier.</param>
         /// <param name="toPublicId">New identifier.</param>
         /// <param name="overwrite">Overwrite a file with the same identifier as new if such file exists.</param>
-        /// <returns></returns>
+        /// <returns>Result of resource renaming.</returns>
         public RenameResult Rename(string fromPublicId, string toPublicId, bool overwrite = false)
         {
             return Rename(new RenameParams(fromPublicId, toPublicId) { Overwrite = overwrite });
@@ -617,7 +712,7 @@ namespace CloudinaryDotNet
         /// Changes public identifier of a file.
         /// </summary>
         /// <param name="parameters">Operation parameters.</param>
-        /// <returns></returns>
+        /// <returns>Result of resource renaming.</returns>
         public RenameResult Rename(RenameParams parameters)
         {
             string uri = m_api.ApiUrlImgUpV.ResourceType(
@@ -627,10 +722,10 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete file from cloudinary
+        /// Delete file from cloudinary.
         /// </summary>
-        /// <param name="parameters">Parameters for deletion of resource from cloudinary</param>
-        /// <returns>Results of deletion</returns>
+        /// <param name="parameters">Parameters for deletion of resource from cloudinary.</param>
+        /// <returns>Results of deletion.</returns>
         public DeletionResult Destroy(DeletionParams parameters)
         {
             string uri = m_api.ApiUrlImgUpV.ResourceType(
@@ -641,20 +736,20 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Generate an image of a given textual string
+        /// Generate an image of a given textual string.
         /// </summary>
-        /// <param name="text">Text to draw</param>
-        /// <returns>Results of generating an image of a given textual string</returns>
+        /// <param name="text">Text to draw.</param>
+        /// <returns>Results of generating an image of a given textual string.</returns>
         public TextResult Text(string text)
         {
             return Text(new TextParams(text));
         }
 
         /// <summary>
-        /// Generate an image of a given textual string
+        /// Generate an image of a given textual string.
         /// </summary>
-        /// <param name="parameters">Parameters of generating an image of a given textual string</param>
-        /// <returns>Results of generating an image of a given textual string</returns>
+        /// <param name="parameters">Parameters of generating an image of a given textual string.</param>
+        /// <returns>Results of generating an image of a given textual string.</returns>
         public TextResult Text(TextParams parameters)
         {
             string uri = m_api.ApiUrlImgUpV.Action("text").BuildUrl();
@@ -665,6 +760,7 @@ namespace CloudinaryDotNet
         /// <summary>
         /// Lists resource types.
         /// </summary>
+        /// <returns>Parsed list of resource types.</returns>
         public ListResourceTypesResult ListResourceTypes()
         {
             return m_api.CallApi<ListResourceTypesResult>(HttpMethod.GET, m_api.ApiUrlV.Add("resources").BuildUrl(), null, null);
@@ -677,7 +773,7 @@ namespace CloudinaryDotNet
         /// <param name="tags">Whether to include tags in result.</param>
         /// <param name="context">Whether to include context in result.</param>
         /// <param name="moderations">Whether to include moderation status in result.</param>
-        /// <returns></returns>
+        /// <returns>Parsed result of the resources listing.</returns>
         public ListResourcesResult ListResources(string nextCursor = null, bool tags = true, bool context = true, bool moderations = true)
         {
             return ListResources(new ListResourcesParams()
@@ -694,6 +790,7 @@ namespace CloudinaryDotNet
         /// </summary>
         /// <param name="type">Resource type.</param>
         /// <param name="nextCursor">Starting position.</param>
+        /// <returns>Parsed result of the resources listing.</returns>
         public ListResourcesResult ListResourcesByType(string type, string nextCursor = null)
         {
             return ListResources(new ListResourcesParams() { Type = type, NextCursor = nextCursor });
@@ -705,7 +802,7 @@ namespace CloudinaryDotNet
         /// <param name="prefix">Public identifier prefix.</param>
         /// <param name="type">Resource type.</param>
         /// <param name="nextCursor">Starting position.</param>
-        /// <returns></returns>
+        /// <returns>Parsed result of the resources listing.</returns>
         public ListResourcesResult ListResourcesByPrefix(string prefix, string type = "upload", string nextCursor = null)
         {
             return ListResources(new ListResourcesByPrefixParams()
@@ -725,7 +822,7 @@ namespace CloudinaryDotNet
         /// <param name="type">Resource type.</param>
         /// <param name="moderations">If true, include moderation status for each resource.</param>
         /// <param name="nextCursor">Starting position.</param>
-        /// <returns></returns>
+        /// <returns>Parsed result of the resources listing.</returns>
         public ListResourcesResult ListResourcesByPrefix(string prefix, bool tags, bool context, bool moderations, string type = "upload", string nextCursor = null)
         {
             return ListResources(new ListResourcesByPrefixParams()
@@ -744,7 +841,7 @@ namespace CloudinaryDotNet
         /// </summary>
         /// <param name="tag">The tag.</param>
         /// <param name="nextCursor">Starting position.</param>
-        /// <returns></returns>
+        /// <returns>Parsed result of the resources listing.</returns>
         public ListResourcesResult ListResourcesByTag(string tag, string nextCursor = null)
         {
             return ListResources(new ListResourcesByTagParams()
@@ -758,7 +855,7 @@ namespace CloudinaryDotNet
         /// Returns resources with specified public identifiers.
         /// </summary>
         /// <param name="publicIds">Public identifiers.</param>
-        /// <returns></returns>
+        /// <returns>Parsed result of the resources listing.</returns>
         public ListResourcesResult ListResourcesByPublicIds(IEnumerable<string> publicIds)
         {
             return ListResources(new ListSpecificResourcesParams()
@@ -774,7 +871,7 @@ namespace CloudinaryDotNet
         /// <param name="tags">Whether to include tags in result.</param>
         /// <param name="context">Whether to include context in result.</param>
         /// <param name="moderations">Whether to include moderation status in result.</param>
-        /// <returns></returns>
+        /// <returns>Parsed result of the resources listing.</returns>
         public ListResourcesResult ListResourceByPublicIds(IEnumerable<string> publicIds, bool tags, bool context, bool moderations)
         {
             return ListResources(new ListSpecificResourcesParams()
@@ -795,7 +892,7 @@ namespace CloudinaryDotNet
         /// <param name="context">Whether to include context in result.</param>
         /// <param name="moderations">Whether to include moderation status in result.</param>
         /// <param name="nextCursor">The next cursor.</param>
-        /// <returns></returns>
+        /// <returns>Parsed result of the resources listing.</returns>
         public ListResourcesResult ListResourcesByModerationStatus(string kind, ModerationStatus status, bool tags = true, bool context = true, bool moderations = true, string nextCursor = null)
         {
             return ListResources(new ListResourcesByModerationParams()
@@ -810,9 +907,10 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Lists resources.
+        /// List resources
         /// </summary>
-        /// <param name="parameters">The parameters.</param>
+        /// <param name="parameters">Parameters to list resources.</param>
+        /// <returns>Parsed result of the resources listing.</returns>
         public ListResourcesResult ListResources(ListResourcesParams parameters)
         {
             var url = m_api.ApiUrlV.
@@ -843,16 +941,30 @@ namespace CloudinaryDotNet
             return m_api.CallApi<ListResourcesResult>(HttpMethod.GET, urlBuilder.ToString(), parameters, null);
         }
 
+        /// <summary>
+        /// List all tags.
+        /// </summary>
+        /// <returns>Parsed list of tags.</returns>
         public ListTagsResult ListTags()
         {
             return ListTags(new ListTagsParams());
         }
 
+        /// <summary>
+        /// Find all tags that start with the given prefix.
+        /// </summary>
+        /// <param name="prefix">The tag prefix.</param>
+        /// <returns>Parsed list of tags.</returns>
         public ListTagsResult ListTagsByPrefix(string prefix)
         {
             return ListTags(new ListTagsParams() { Prefix = prefix });
         }
 
+        /// <summary>
+        /// List tags.
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public ListTagsResult ListTags(ListTagsParams parameters)
         {
             UrlBuilder urlBuilder = new UrlBuilder(
@@ -865,11 +977,20 @@ namespace CloudinaryDotNet
             return m_api.CallApi<ListTagsResult>(HttpMethod.GET, urlBuilder.ToString(), parameters, null);
         }
 
+        /// <summary>
+        /// List transformations.
+        /// </summary>
+        /// <returns>Parsed list of transformations details.</returns>
         public ListTransformsResult ListTransformations()
         {
             return ListTransformations(new ListTransformsParams());
         }
 
+        /// <summary>
+        /// List transformations.
+        /// </summary>
+        /// <param name="parameters">Parameters of the request for a list of transformation.</param>
+        /// <returns>Parsed list of transformations details.</returns>
         public ListTransformsResult ListTransformations(ListTransformsParams parameters)
         {
             UrlBuilder urlBuilder = new UrlBuilder(
@@ -881,11 +1002,21 @@ namespace CloudinaryDotNet
             return m_api.CallApi<ListTransformsResult>(HttpMethod.GET, urlBuilder.ToString(), parameters, null);
         }
 
+        /// <summary>
+        /// Get details of a single transformation by name.
+        /// </summary>
+        /// <param name="transform">Name of the transformation.</param>
+        /// <returns>Parsed details of a single transformation.</returns>
         public GetTransformResult GetTransform(string transform)
         {
             return GetTransform(new GetTransformParams() { Transformation = transform });
         }
 
+        /// <summary>
+        /// Get details of a single transformation.
+        /// </summary>
+        /// <param name="parameters">Parameters of the request of transformation details.</param>
+        /// <returns>Parsed details of a single transformation.</returns>
         public GetTransformResult GetTransform(GetTransformParams parameters)
         {
             UrlBuilder urlBuilder = new UrlBuilder(
@@ -898,11 +1029,22 @@ namespace CloudinaryDotNet
             return m_api.CallApi<GetTransformResult>(HttpMethod.GET, urlBuilder.ToString(), parameters, null);
         }
 
+        /// <summary>
+        /// Update details of an existing resource.
+        /// </summary>
+        /// <param name="publicId">The public ID of the resource to update.</param>
+        /// <param name="moderationStatus">The image moderation status.</param>
+        /// <returns>Parsed response of the detailed resource information.</returns>
         public GetResourceResult UpdateResource(string publicId, ModerationStatus moderationStatus)
         {
             return UpdateResource(new UpdateParams(publicId) { ModerationStatus = moderationStatus });
         }
 
+        /// <summary>
+        /// Update details of an existing resource.
+        /// </summary>
+        /// <param name="parameters">Parameters to update details of an existing resource.</param>
+        /// <returns>Parsed response of the detailed resource information.</returns>
         public GetResourceResult UpdateResource(UpdateParams parameters)
         {
             var url = m_api.ApiUrlV.
@@ -914,11 +1056,21 @@ namespace CloudinaryDotNet
             return m_api.CallApi<GetResourceResult>(HttpMethod.POST, url, parameters, null);
         }
 
+        /// <summary>
+        /// Get details of a single resource as well as all its derived resources by its public ID.
+        /// </summary>
+        /// <param name="publicId">The public ID of the resource.</param>
+        /// <returns>Parsed response with the detailed resource information.</returns>
         public GetResourceResult GetResource(string publicId)
         {
             return GetResource(new GetResourceParams(publicId));
         }
 
+        /// <summary>
+        /// Get details of the requested resource as well as all its derived resources.
+        /// </summary>
+        /// <param name="parameters">Parameters of the request of resource.</param>
+        /// <returns>Parsed response with the detailed resource information.</returns>
         public GetResourceResult GetResource(GetResourceParams parameters)
         {
             UrlBuilder urlBuilder = new UrlBuilder(
@@ -933,6 +1085,11 @@ namespace CloudinaryDotNet
             return m_api.CallApi<GetResourceResult>(HttpMethod.GET, urlBuilder.ToString(), parameters, null);
         }
 
+        /// <summary>
+        /// Delete all derived resources with the given IDs.
+        /// </summary>
+        /// <param name="ids">An array of up to 100 derived_resource_ids.</param>
+        /// <returns>Parsed result of deletion derived resources.</returns>
         public DelDerivedResResult DeleteDerivedResources(params string[] ids)
         {
             DelDerivedResParams p = new DelDerivedResParams();
@@ -940,6 +1097,11 @@ namespace CloudinaryDotNet
             return DeleteDerivedResources(p);
         }
 
+        /// <summary>
+        /// Delete all derived resources with the given parameters.
+        /// </summary>
+        /// <param name="parameters">Parameters to delete derived resources.</param>
+        /// <returns>Parsed result of deletion derived resources.</returns>
         public DelDerivedResResult DeleteDerivedResources(DelDerivedResParams parameters)
         {
             UrlBuilder urlBuilder = new UrlBuilder(
@@ -951,6 +1113,12 @@ namespace CloudinaryDotNet
             return m_api.CallApi<DelDerivedResResult>(HttpMethod.DELETE, urlBuilder.ToString(), parameters, null);
         }
 
+        /// <summary>
+        /// Delete all resources of the given resource type and with the given public IDs.
+        /// </summary>
+        ///<param name="type">The type of file to delete. Default: image.</param>
+        /// <param name="publicIds">Array of up to 100 public_ids.</param>
+        /// <returns>Parsed result of deletion resources.</returns>
         public DelResResult DeleteResources(ResourceType type, params string[] publicIds)
         {
             DelResParams p = new DelResParams() { ResourceType = type };
@@ -958,6 +1126,11 @@ namespace CloudinaryDotNet
             return DeleteResources(p);
         }
 
+        /// <summary>
+        /// Delete all resources with the given public IDs.
+        /// </summary>
+        /// <param name="publicIds">Array of up to 100 public_ids</param>
+        /// <returns>Parsed result of deletion resources.</returns>
         public DelResResult DeleteResources(params string[] publicIds)
         {
             DelResParams p = new DelResParams();
@@ -965,42 +1138,91 @@ namespace CloudinaryDotNet
             return DeleteResources(p);
         }
 
+        /// <summary>
+        /// Delete all resources, including derived resources, where the public ID starts with the given prefix (up to
+        /// a maximum of 1000 original resources).
+        /// </summary>
+        /// <param name="prefix">Delete all resources where the public ID starts with the given prefix. </param>
+        /// <returns>Parsed result of deletion resources.</returns>
         public DelResResult DeleteResourcesByPrefix(string prefix)
         {
             DelResParams p = new DelResParams() { Prefix = prefix };
             return DeleteResources(p);
         }
 
+        /// <summary>
+        /// Delete all resources, including derived resources, where the public ID starts with the given prefix (up to
+        /// a maximum of 1000 original resources).
+        /// </summary>
+        /// <param name="prefix">Delete all resources where the public ID starts with the given prefix. </param>
+        /// <param name="keepOriginal">If true, delete only the derived images of the matching resources.</param>
+        /// <param name="nextCursor">Continue deletion from the given cursor.</param>
+        /// <returns>Parsed result of deletion resources.</returns>
         public DelResResult DeleteResourcesByPrefix(string prefix, bool keepOriginal, string nextCursor)
         {
             DelResParams p = new DelResParams() { Prefix = prefix, KeepOriginal = keepOriginal, NextCursor = nextCursor };
             return DeleteResources(p);
         }
 
+        /// <summary>
+        /// Delete resources by the given tag name.
+        /// </summary>
+        /// <param name="tag">
+        /// Delete all resources (and their derivatives) with the given tag name (up to a maximum of 
+        /// 1000 original resources).
+        /// </param>
+        /// <returns>Parsed result of deletion resources.</returns>
         public DelResResult DeleteResourcesByTag(string tag)
         {
             DelResParams p = new DelResParams() { Tag = tag };
             return DeleteResources(p);
         }
 
+        /// <summary>
+        /// Delete resources by the given tag name.
+        /// </summary>
+        /// <param name="tag">
+        /// Delete all resources (and their derivatives) with the given tag name (up to a maximum of 
+        /// 1000 original resources).
+        /// </param>
+        /// <param name="keepOriginal">If true, delete only the derived images of the matching resources.</param>
+        /// <param name="nextCursor">Continue deletion from the given cursor.</param>
+        /// <returns>Parsed result of deletion resources.</returns>
         public DelResResult DeleteResourcesByTag(string tag, bool keepOriginal, string nextCursor)
         {
             DelResParams p = new DelResParams() { Tag = tag, KeepOriginal = keepOriginal, NextCursor = nextCursor };
             return DeleteResources(p);
         }
 
+        /// <summary>
+        /// Delete all resources.
+        /// </summary>
+        /// <returns>Parsed result of deletion resources.</returns>
         public DelResResult DeleteAllResources()
         {
             DelResParams p = new DelResParams() { All = true };
             return DeleteResources(p);
         }
 
+        /// <summary>
+        /// Delete all resources with conditions.
+        /// </summary>
+        /// <param name="keepOriginal">If true, delete only the derived resources.</param>
+        /// <param name="nextCursor">
+        /// Value of the <see cref="DelResResult.NextCursor"/> to continue delete from.
+        /// </param>
+        /// <returns>Parsed result of deletion resources.</returns>
         public DelResResult DeleteAllResources(bool keepOriginal, string nextCursor)
         {
             DelResParams p = new DelResParams() { All = true, KeepOriginal = keepOriginal, NextCursor = nextCursor };
             return DeleteResources(p);
         }
 
+        /// <summary>
+        /// Delete all resources with parameters.
+        /// </summary>
+        /// <param name="parameters">Parameters for deletion resources.</param>
+        /// <returns>Parsed result of deletion resources.</returns>
         public DelResResult DeleteResources(DelResParams parameters)
         {
             Url url = m_api.ApiUrlV.
@@ -1016,6 +1238,11 @@ namespace CloudinaryDotNet
             return m_api.CallApi<DelResResult>(HttpMethod.DELETE, urlBuilder.ToString(), parameters, null);
         }
 
+        /// <summary>
+        /// Restore a deleted resources by array of public ids.
+        /// </summary>
+        /// <param name="publicIds">The public IDs of (deleted or existing) backed up resources to restore.</param>
+        /// <returns>Parsed result of restoring resources.</returns>
         public RestoreResult Restore(params string[] publicIds)
         {
             RestoreParams restoreParams = new RestoreParams();
@@ -1023,6 +1250,11 @@ namespace CloudinaryDotNet
             return Restore(restoreParams);
         }
 
+        /// <summary>
+        /// Restore a deleted resources.
+        /// </summary>
+        /// <param name="parameters">Parameters to restore a deleted resources.</param>
+        /// <returns>Parsed result of restoring resources.</returns>
         public RestoreResult Restore(RestoreParams parameters)
         {
             var url = m_api.ApiUrlV.
@@ -1035,8 +1267,12 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Calls an API method and returns a parsed result
+        /// Calls an upload mappings API.
         /// </summary>
+        /// <param name="httpMethod">HTTP method.</param>
+        /// <param name="parameters">Parameters for Mapping of folders to URL prefixes for dynamic image fetching from
+        /// existing online locations.</param>
+        /// <returns>Parsed response after Upload mappings manipulation.</returns>
         private UploadMappingResults CallUploadMappingsAPI(HttpMethod httpMethod, UploadMappingParams parameters)
         {
             string url = (httpMethod == HttpMethod.POST || httpMethod == HttpMethod.PUT)
@@ -1047,15 +1283,13 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Returns list of all upload mappings
+        /// Returns list of all upload mappings.
         /// </summary>
-        /// <param name="parameters">Uses only <see>
-        ///         <cref>MaxResults</cref>
-        ///     </see>
-        ///     and <see>
-        ///         <cref>NextCursor</cref>
-        ///     </see>
-        ///     properties. Can be null.</param>
+        /// <param name="parameters">
+        /// Uses only <see cref="UploadMappingParams.MaxResults"/> and <see cref="UploadMappingParams.NextCursor"/>
+        /// properties. Can be null.
+        /// </param>
+        /// <returns>Parsed response after Upload mappings manipulation.</returns>
         public UploadMappingResults UploadMappings(UploadMappingParams parameters)
         {
             if (parameters == null)
@@ -1067,6 +1301,8 @@ namespace CloudinaryDotNet
         /// <summary>
         /// Returns single upload mapping by <see cref="Folder"/> name.
         /// </summary>
+        /// <param name="folder">Folder name.</param>
+        /// <returns>Parsed response after Upload mappings manipulation.</returns>
         public UploadMappingResults UploadMapping(string folder)
         {
             if (string.IsNullOrEmpty(folder))
@@ -1080,6 +1316,9 @@ namespace CloudinaryDotNet
         /// <summary>
         /// Create a new upload mapping folder and its template (URL).
         /// </summary>
+        /// <param name="folder">Folder name to create.</param>
+        /// <param name="template">Url template for mapping to the <paramref name="folder"/>.</param>
+        /// <returns>Parsed response after Upload mappings manipulation.</returns>
         public UploadMappingResults CreateUploadMapping(string folder, string template)
         {
             if (string.IsNullOrEmpty(folder))
@@ -1097,11 +1336,11 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Updates existing upload mapping
+        /// Updates existing upload mapping.
         /// </summary>
-        /// <param name="folder">Existing Folder to be updated</param>
-        /// <param name="newTemplate">New value of Template Url</param>
-        /// <returns></returns>
+        /// <param name="folder">Existing Folder to be updated.</param>
+        /// <param name="newTemplate">New value of Template Url.</param>
+        /// <returns>Parsed response after Upload mappings manipulation.</returns>
         public UploadMappingResults UpdateUploadMapping(string folder, string newTemplate)
         {
             if (string.IsNullOrEmpty(folder))
@@ -1116,16 +1355,19 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Deletes all upload mappings
+        /// Delete all upload mappings.
         /// </summary>
+        /// <returns>Parsed response after Upload mappings manipulation.</returns>
         public UploadMappingResults DeleteUploadMapping()
         {
             return DeleteUploadMapping(string.Empty);
         }
 
         /// <summary>
-        /// Deletes upload mapping by <paramref name="folder"/> name
+        /// Delete upload mapping by <paramref name="folder"/> name.
         /// </summary>
+        /// <param name="folder">Folder name.</param>
+        /// <returns>Parsed response after Upload mappings manipulation.</returns>
         public UploadMappingResults DeleteUploadMapping(string folder)
         {
             var parameters = new UploadMappingParams();
@@ -1138,6 +1380,11 @@ namespace CloudinaryDotNet
             return CallUploadMappingsAPI(HttpMethod.DELETE, parameters);
         }
 
+        /// <summary>
+        /// Update cloudinary transformation resource.
+        /// </summary>
+        /// <param name="parameters">Parameters for transformation update.</param>
+        /// <returns>Parsed response after transformation manipulation.</returns>
         public UpdateTransformResult UpdateTransform(UpdateTransformParams parameters)
         {
             var url = m_api.ApiUrlV.
@@ -1148,6 +1395,11 @@ namespace CloudinaryDotNet
             return m_api.CallApi<UpdateTransformResult>(HttpMethod.PUT, url, parameters, null);
         }
 
+        /// <summary>
+        /// Create cloudinary transformation resource.
+        /// </summary>
+        /// <param name="parameters">Parameters of the new transformation.</param>
+        /// <returns>Parsed response after transformation manipulation.</returns>
         public TransformResult CreateTransform(CreateTransformParams parameters)
         {
             var url = m_api.ApiUrlV.
@@ -1158,6 +1410,11 @@ namespace CloudinaryDotNet
             return m_api.CallApi<TransformResult>(HttpMethod.POST, url, parameters, null);
         }
 
+        /// <summary>
+        /// Delete transformation by name.
+        /// </summary>
+        /// <param name="transformName">The name of transformation to delete.</param>
+        /// <returns>Parsed response after transformation manipulation.</returns>
         public TransformResult DeleteTransform(string transformName)
         {
             var url = m_api.ApiUrlV.
@@ -1169,10 +1426,10 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Eagerly generate sprites
+        /// Eagerly generate sprites.
         /// </summary>
-        /// <param name="parameters">Parameters for sprite generation</param>
-        /// <returns>Result of sprite generation</returns>
+        /// <param name="parameters">Parameters for sprite generation.</param>
+        /// <returns>Parsed response with detailed information about the created sprite.</returns>
         public SpriteResult MakeSprite(SpriteParams parameters)
         {
             var url = m_api.ApiUrlImgUpV.
@@ -1183,10 +1440,10 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Allows multi transformation
+        /// Create a single animated GIF file from a group of images.
         /// </summary>
-        /// <param name="parameters">Parameters of operation</param>
-        /// <returns>Result of operation</returns>
+        /// <param name="parameters">Parameters of Multi operation.</param>
+        /// <returns>Parsed response with detailed information about the created animated GIF.</returns>
         public MultiResult Multi(MultiParams parameters)
         {
             var url = m_api.ApiUrlImgUpV.
@@ -1197,10 +1454,10 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Explode multipage document to single pages
+        /// Explode multipage document to single pages.
         /// </summary>
-        /// <param name="parameters">Parameters of explosion</param>
-        /// <returns>Result of operation</returns>
+        /// <param name="parameters">Parameters of explosion operation.</param>
+        /// <returns>Parsed response after a call of Explode method.</returns>
         public ExplodeResult Explode(ExplodeParams parameters)
         {
             var url = m_api.ApiUrlImgUpV.
@@ -1215,7 +1472,7 @@ namespace CloudinaryDotNet
         /// </summary>
         /// <param name="directUpload">Whether to reference additional scripts that are necessary for uploading files directly from browser.</param>
         /// <param name="dir">Override location of js files (default: ~/Scripts).</param>
-        /// <returns></returns>
+        /// <returns>HTML script tag with cloudinary JS configuration.</returns>
 #if NET40
         public System.Web.IHtmlString GetCloudinaryJsConfig(bool directUpload = false, string dir = "")
 #else

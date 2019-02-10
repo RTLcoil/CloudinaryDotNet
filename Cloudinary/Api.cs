@@ -23,8 +23,7 @@ namespace CloudinaryDotNet
         private Func<string, HttpWebRequest> RequestBuilder = (x) => HttpWebRequest.Create(x) as HttpWebRequest;
 
         /// <summary>
-        /// Default parameterless constructor.
-        /// Assumes that environment variable CLOUDINARY_URL is set.
+        /// Default parameterless constructor. Assumes that environment variable CLOUDINARY_URL is set.
         /// </summary>
         public Api() : base()
         {
@@ -32,35 +31,36 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Parameterized constructor
+        /// Instantiate the cloudinary <see cref="Api"/> object with cloudinary Url.
         /// </summary>
-        /// <param name="cloudinaryUrl">Cloudinary URL</param>
+        /// <param name="cloudinaryUrl">Cloudinary URL.</param>
         public Api(string cloudinaryUrl) : base(cloudinaryUrl)
         {
         }
 
         /// <summary>
-        /// Parametrized constructor
+        /// Instantiate the cloudinary <see cref="Api"/> object with initial parameters.
         /// </summary>
-        /// <param name="account">Cloudinary account</param>
-        /// <param name="usePrivateCdn">Whether to use private Content Delivery Network</param>
-        /// <param name="privateCdn">Private Content Delivery Network</param>
+        /// <param name="account">Cloudinary account.</param>
+        /// <param name="usePrivateCdn">Whether to use private Content Delivery Network.</param>
+        /// <param name="privateCdn">Private Content Delivery Network.</param>
         /// <param name="shortenUrl">Whether to use shorten url when possible.</param>
         /// <param name="cSubDomain">if set to <c>true</c> [c sub domain].</param>
-        public Api(Account account, bool usePrivateCdn, string privateCdn, bool shortenUrl, bool cSubDomain) : base(account, usePrivateCdn, privateCdn, shortenUrl, cSubDomain)
+        public Api(Account account, bool usePrivateCdn, string privateCdn, bool shortenUrl, bool cSubDomain) 
+            : base(account, usePrivateCdn, privateCdn, shortenUrl, cSubDomain)
         {
         }
 
         /// <summary>
-        /// Parametrized constructor
+        /// Instantiate the cloudinary <see cref="Api"/> object with account.
         /// </summary>
-        /// <param name="account">Cloudinary account</param>
+        /// <param name="account">Cloudinary account.</param>
         public Api(Account account) : base(account)
         {
         }
 
         /// <summary>
-        /// Initializes the <see cref="Api"/> class.
+        /// Default static parameterless constructor. Instantiate the cloudinary <see cref="Api"/> object.
         /// </summary>
         static Api()
         {
