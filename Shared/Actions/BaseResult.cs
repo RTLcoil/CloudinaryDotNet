@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Status of the image moderation process.
+    /// Status of the asset moderation process.
     /// </summary>
     public enum ModerationStatus
     {
@@ -100,7 +100,7 @@ namespace CloudinaryDotNet.Actions
     }
 
     /// <summary>
-    /// Represents basic result of the HTTP request to the API.
+    /// Represents a result of HTTP API call. This is an abstract class.
     /// </summary>
     [DataContract]
     public abstract class BaseResult

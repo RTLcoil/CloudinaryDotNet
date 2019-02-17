@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Base parameters to update streaming profile.
+    /// Base parameters of update streaming profile request.
     /// </summary>
     public class StreamingProfileBaseParams : BaseParams
     {

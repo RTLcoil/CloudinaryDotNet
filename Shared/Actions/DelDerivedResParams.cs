@@ -13,7 +13,7 @@ namespace CloudinaryDotNet.Actions
         List<Transformation> m_tranformations = new List<Transformation>();
         
         /// <summary>
-        /// Instantiate the <see cref="DelDerivedResParams"/> object.
+        /// Instantiates the <see cref="DelDerivedResParams"/> object.
         /// </summary>
         public DelDerivedResParams()
         {

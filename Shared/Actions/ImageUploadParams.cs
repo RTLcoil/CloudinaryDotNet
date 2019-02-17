@@ -12,7 +12,7 @@ namespace CloudinaryDotNet.Actions
     public class ImageUploadParams : RawUploadParams
     {
         /// <summary>
-        /// Instantiate the <see cref="ImageUploadParams"/> object.
+        /// Instantiates the <see cref="ImageUploadParams"/> object.
         /// </summary>
         public ImageUploadParams()
         {

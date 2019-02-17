@@ -10,7 +10,7 @@ namespace CloudinaryDotNet.Actions
     public class ExplodeParams : BaseParams
     {
         /// <summary>
-        /// Instantiate the <see cref="ExplodeParams"/> object.
+        /// Instantiates the <see cref="ExplodeParams"/> object.
         /// </summary>
         /// <param name="publicId">The identifier of the uploaded multi-page file (PDF or animated GIF). 
         /// Note: The public ID for images does not include a file extension.</param>

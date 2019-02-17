@@ -15,12 +15,12 @@ namespace CloudinaryDotNet.Actions
     public class UploadPresetParams : BaseParams
     {
         /// <summary>
-        /// Default parameterless constructor. Instantiate the <see cref="UploadPresetParams"/> object.
+        /// Default parameterless constructor. Instantiates the <see cref="UploadPresetParams"/> object.
         /// </summary>
         public UploadPresetParams() { }
 
         /// <summary>
-        /// Instantiate the <see cref="UploadPresetParams"/> object with result object.
+        /// Instantiates the <see cref="UploadPresetParams"/> object with result object.
         /// </summary>
         /// <param name="preset">The preset returned from API.</param>
         public UploadPresetParams(GetUploadPresetResult preset)

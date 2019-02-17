@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Parsed result of the resources listing.
+    /// Parsed result of the resources listing request.
     /// </summary>
     [DataContract]
     public class ListResourcesResult : BaseResult

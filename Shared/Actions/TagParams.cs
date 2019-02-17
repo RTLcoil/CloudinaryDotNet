@@ -6,12 +6,12 @@ using System.Runtime.Serialization;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Stores a set of parameters for modifying the assigned tags of an already uploaded asset.
+    /// Parameters of tag management request.
     /// </summary>
     public class TagParams : BaseParams
     {
         /// <summary>
-        /// Instantiate the <see cref="TagParams"/> object.
+        /// Instantiates the <see cref="TagParams"/> object.
         /// </summary>
 		public TagParams()
 		{

@@ -69,7 +69,7 @@ namespace CloudinaryDotNet
         protected List<string> m_expressions;
 
         /// <summary>
-        /// Default paramaterless constructor. Instantiate the <see cref="BaseExpression"/> object.
+        /// Default paramaterless constructor. Instantiates the <see cref="BaseExpression"/> object.
         /// </summary>
         protected BaseExpression()
         {

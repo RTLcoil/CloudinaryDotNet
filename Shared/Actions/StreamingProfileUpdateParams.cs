@@ -1,7 +1,7 @@
 ﻿namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Parameters to update streaming profile.
+    /// Parameters of update streaming profile request.
     /// </summary>
     public class StreamingProfileUpdateParams : StreamingProfileBaseParams
     {

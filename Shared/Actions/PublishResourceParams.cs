@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Parameters to resource publishing.
+    /// Parameters to publish resource request.
     /// </summary>
     public class PublishResourceParams : BaseParams
     {
@@ -13,7 +13,7 @@ namespace CloudinaryDotNet.Actions
         string m_type = string.Empty;
 
         /// <summary>
-        /// Instantiate the <see cref="PublishResourceParams"/> object.
+        /// Instantiates the <see cref="PublishResourceParams"/> object.
         /// </summary>
         public PublishResourceParams() { }
 

@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Results of raw file uploading.
+    /// Results of raw file upload.
     /// </summary>
     [DataContract]
     public class RawUploadResult : UploadResult
@@ -42,7 +42,7 @@ namespace CloudinaryDotNet.Actions
 
         /// <summary>
         /// An array of access types for the asset. The anonymous access type should also include 'start' and 'end'
-        /// dates (in ISO 8601 format) defining when the resource is publically available.
+        /// dates (in ISO 8601 format) defining when the resource is publicly available.
         /// </summary>
         [DataMember(Name = "access_control")]
         public List<AccessControlRule> AccessControl { get; protected set; }

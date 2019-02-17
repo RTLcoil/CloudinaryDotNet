@@ -133,7 +133,7 @@ namespace CloudinaryDotNet
         /// <summary>
         /// Control audio sample frequency.
         /// </summary>
-        /// <param name="frequency">A satring value in Hz and can only take one of the following values: 8000, 11025,
+        /// <param name="frequency">A string value in Hz and can only take one of the following values: 8000, 11025,
         /// 16000, 22050, 32000, 37800, 44056, 44100, 47250, 48000, 88200, 96000, 176400 or 192000.</param>
         public Transformation AudioFrequency(string frequency)
         {

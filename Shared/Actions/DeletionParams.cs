@@ -9,7 +9,7 @@ namespace CloudinaryDotNet.Actions
     public class DeletionParams : BaseParams
     {
         /// <summary>
-        /// Instantiate the <see cref="DeletionParams"/> object.
+        /// Instantiates the <see cref="DeletionParams"/> object.
         /// </summary>
         /// <param name="publicId">The identifier of the uploaded asset. </param>
         public DeletionParams(string publicId)
@@ -31,7 +31,7 @@ namespace CloudinaryDotNet.Actions
 
         /// <summary>
         /// If true, invalidates CDN cached copies of the asset (and all its transformed versions). Default: false.
-        /// Note that it usually takes a few minutes(although it might take up to an hour) for the invalidation to
+        /// Note that it usually takes a few minutes (although it might take up to an hour) for the invalidation to
         /// fully propagate through the CDN.
         /// </summary>
         public bool Invalidate { get; set; }

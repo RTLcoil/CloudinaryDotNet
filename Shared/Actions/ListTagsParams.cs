@@ -4,12 +4,12 @@ using System.Collections.Generic;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Parameters to list tags.
+    /// Parameters of list tags request.
     /// </summary>
     public class ListTagsParams : BaseParams
     {
         /// <summary>
-        /// Instantiate the <see cref="ListTagsParams"/> object.
+        /// Instantiates the <see cref="ListTagsParams"/> object.
         /// </summary>
         public ListTagsParams()
         {

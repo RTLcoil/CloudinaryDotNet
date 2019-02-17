@@ -10,7 +10,7 @@ namespace CloudinaryDotNet
     public class Condition : BaseExpression<Condition>
     {
         /// <summary>
-        /// Default parameterless constructor. Instantiate the <see cref="Condition"/> object.
+        /// Default parameterless constructor. Instantiates the <see cref="Condition"/> object.
         /// </summary>
         public Condition() { }
 
@@ -26,7 +26,7 @@ namespace CloudinaryDotNet
 
 
         /// <summary>
-        /// Create a predicate for binary operators.
+        /// Creates a predicate for binary operators.
         /// </summary>
         /// <param name="name">A name of parameter.</param>
         /// <param name="operator">An operator.</param>
@@ -52,7 +52,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get a predicate for width.
+        /// Gets a predicate for width.
         /// </summary>
         /// <param name="operator">Applied operator.</param>
         /// <param name="value">The compared value.</param>
@@ -62,7 +62,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get a predicate for initial width.
+        /// Gets a predicate for initial width.
         /// </summary>
         /// <param name="operator">Applied operator.</param>
         /// <param name="value">The compared value.</param>
@@ -72,7 +72,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get a predicate for height.
+        /// Gets a predicate for height.
         /// </summary>
         /// <param name="operator">Applied operator.</param>
         /// <param name="value">The compared value.</param>
@@ -82,7 +82,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get a predicate for initial height.
+        /// Gets a predicate for initial height.
         /// </summary>
         /// <param name="operator">Applied operator.</param>
         /// <param name="value">The compared value.</param>
@@ -92,7 +92,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get a predicate for aspect ratio.
+        /// Gets a predicate for aspect ratio.
         /// </summary>
         /// <param name="operator">Applied operator.</param>
         /// <param name="value">The compared value.</param>
@@ -112,7 +112,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get a predicate for page count.
+        /// Gets a predicate for page count.
         /// </summary>
         /// <param name="operator">Applied operator.</param>
         /// <param name="value">The compared value.</param>

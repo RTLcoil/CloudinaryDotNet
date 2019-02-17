@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    ///  Parameters to list upload presets.
+    ///  Parameters of list upload presets request.
     /// </summary>
     public class ListUploadPresetsParams : BaseParams
     {

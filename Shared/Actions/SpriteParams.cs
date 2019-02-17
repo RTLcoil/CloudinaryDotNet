@@ -5,12 +5,12 @@ using System.ComponentModel;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Parameters for merging a group of images into a sprite.
+    /// Parameters of create sprite request.
     /// </summary>
     public class SpriteParams : BaseParams
     {
         /// <summary>
-        /// Instantiate the <see cref="SpriteParams"/> object.
+        /// Instantiates the <see cref="SpriteParams"/> object.
         /// </summary>
         /// <param name="tag">The tag name assigned to images that we should merge into the sprite.</param>
         public SpriteParams(string tag)

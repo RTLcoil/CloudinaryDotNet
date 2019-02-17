@@ -9,7 +9,7 @@ namespace CloudinaryDotNet.Actions
     public class RenameParams : BaseParams
     {
         /// <summary>
-        /// Instantiate the <see cref="RenameParams"/> object.
+        /// Instantiates the <see cref="RenameParams"/> object.
         /// </summary>
         /// <param name="fromPublicId">The current identifier of the uploaded asset.</param>
         /// <param name="toPublicId">The new identifier to assign to the uploaded asset.</param>

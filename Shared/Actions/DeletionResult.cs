@@ -3,7 +3,7 @@
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Parsed result of asset destroy.
+    /// Parsed result of asset deletion.
     /// </summary>
     [DataContract]
     public class DeletionResult : BaseResult

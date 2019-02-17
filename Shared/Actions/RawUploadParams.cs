@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Basic parameters of file uploading.
+    /// Base parameters of file upload request.
     /// </summary>
     public class BasicRawUploadParams : BaseParams
     {
@@ -78,7 +78,7 @@ namespace CloudinaryDotNet.Actions
     public class RawUploadParams : BasicRawUploadParams
     {
         /// <summary>
-        /// Instantiate the <see cref="RawUploadParams"/> object.
+        /// Instantiates the <see cref="RawUploadParams"/> object.
         /// </summary>
         public RawUploadParams()
         {

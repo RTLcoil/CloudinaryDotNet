@@ -5,12 +5,12 @@ using System.ComponentModel;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Parameters for creation a single animated GIF file from a group of images.
+    /// Parameters of request to create a single animated GIF file from a group of images.
     /// </summary>
     public class MultiParams : BaseParams
     {
         /// <summary>
-        /// Instantiate the <see cref="MultiParams"/> object.
+        /// Instantiates the <see cref="MultiParams"/> object.
         /// </summary>
         /// <param name="tag">The animated GIF is created from all images with this tag.</param>
         public MultiParams(string tag)

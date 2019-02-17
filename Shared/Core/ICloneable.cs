@@ -2,14 +2,14 @@
 namespace CloudinaryDotNet.Core
 {
     /// <summary>
-    /// Interface for support of clone method.
+    /// Supports cloning, which creates a new instance of a class with the same value as an existing instance.
     /// </summary>
     public interface ICloneable
     {
         /// <summary>
-        /// Clone object.
+        /// Creates a new object that is a copy of the current instance.
         /// </summary>
-        /// <returns>A new instance of this object.</returns>
+        /// <returns>A new object that is a copy of this instance.</returns>
         object Clone();
     }
 }

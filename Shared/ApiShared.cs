@@ -45,7 +45,7 @@ namespace CloudinaryDotNet
         string m_apiAddr = "https://" + ADDR_API;
 
         /// <summary>
-        /// If set to <c>true</c> [c sub domain].
+        /// Whether to use sub domain.
         /// </summary>
         public bool CSubDomain;
 
@@ -187,7 +187,7 @@ namespace CloudinaryDotNet
         /// <param name="usePrivateCdn">Whether to use private Content Delivery Network.</param>
         /// <param name="privateCdn">Private Content Delivery Network.</param>
         /// <param name="shortenUrl">Whether to use shorten url when possible.</param>
-        /// <param name="cSubDomain">If set to <c>true</c> [c sub domain].</param>
+        /// <param name="cSubDomain">Whether to use sub domain.</param>
         public ApiShared(Account account, bool usePrivateCdn, string privateCdn, bool shortenUrl, bool cSubDomain)
             : this(account)
         {

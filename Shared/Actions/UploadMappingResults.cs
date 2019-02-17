@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Parsed response after Upload mappings manipulation.
+    /// Response of upload mappings manipulation.
     /// </summary>
     [DataContract]
     public class UploadMappingResults : BaseResult

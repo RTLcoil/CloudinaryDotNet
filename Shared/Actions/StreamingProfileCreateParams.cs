@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Parameters to create streaming profile.
+    /// Parameters of create streaming profile request.
     /// </summary>
     public class StreamingProfileCreateParams : StreamingProfileBaseParams
     {

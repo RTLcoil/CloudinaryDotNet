@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Parameters to restore a deleted resources.
+    /// Parameters of restore a deleted resources request.
     /// </summary>
     public class RestoreParams : BaseParams
     {
@@ -12,7 +12,7 @@ namespace CloudinaryDotNet.Actions
         ResourceType m_resourceType = ResourceType.Image;
 
         /// <summary>
-        /// Instantiate the <see cref="RestoreParams"/> object.
+        /// Instantiates the <see cref="RestoreParams"/> object.
         /// </summary>
         public RestoreParams() { }
 

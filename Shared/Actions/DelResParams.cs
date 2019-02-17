@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Parameters for deletion resources.
+    /// Parameters for deletion of resources.
     /// </summary>
     public class DelResParams : BaseParams
     {
@@ -14,7 +14,7 @@ namespace CloudinaryDotNet.Actions
         bool m_all;
 
         /// <summary>
-        /// Instantiate the <see cref="DelResParams"/> object.
+        /// Instantiates the <see cref="DelResParams"/> object.
         /// </summary>
         public DelResParams()
         {

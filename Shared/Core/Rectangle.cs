@@ -8,7 +8,7 @@ namespace CloudinaryDotNet.Core
     public struct Rectangle
     {
         /// <summary>
-        /// Instantiate the <see cref="Rectangle"/> object with the specified location and size.
+        /// Instantiates the <see cref="Rectangle"/> object with the specified location and size.
         /// </summary>
         /// <param name="x">the x-coordinate of the upper-left corner of this <see cref="Rectangle"/> structure</param>
         /// <param name="y">the y-coordinate of the upper-left corner of this <see cref="Rectangle"/> structure</param>

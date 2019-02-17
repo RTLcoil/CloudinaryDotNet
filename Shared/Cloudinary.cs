@@ -9,7 +9,7 @@ using System.Text;
 namespace CloudinaryDotNet
 {
     /// <summary>
-    /// Main class of cloudinary .NET API.
+    /// Main class of Cloudinary .NET API.
     /// </summary>
     public partial class Cloudinary
     {
@@ -47,7 +47,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get the advanced search provider used by the Cloudinary instance.
+        /// Gets the advanced search provider used by the Cloudinary instance.
         /// </summary>
         /// <returns></returns>
         public Search Search()
@@ -64,7 +64,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Instantiate the <see cref="Cloudinary"/> object with cloudinary Url.
+        /// Instantiates the <see cref="Cloudinary"/> object with Cloudinary Url.
         /// </summary>
         /// <param name="cloudinaryUrl">Cloudinary URL.</param>
         public Cloudinary(string cloudinaryUrl)
@@ -73,7 +73,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Instantiate the <see cref="Cloudinary"/> object with cloudinary account.
+        /// Instantiates the <see cref="Cloudinary"/> object with Cloudinary account.
         /// </summary>
         /// <param name="account">Cloudinary account.</param>
         public Cloudinary(Account account)
@@ -161,7 +161,7 @@ namespace CloudinaryDotNet
 
 
         /// <summary>
-        ///  Return Url on archive file.
+        ///  Returns Url on archive file.
         /// </summary>
         /// <param name="parameters">Parameters of generated archive.</param>
         /// <returns>Url on archive file.</returns>
@@ -179,7 +179,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Publish resources by prefix.
+        /// Publishes resources by prefix.
         /// </summary>
         /// <param name="prefix">The prefix for publishing resources.</param>
         /// <param name="parameters">Parameters for publishing of resources.</param>
@@ -190,7 +190,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Publish resources by tag.
+        /// Publishes resources by tag.
         /// </summary>
         /// <param name="tag">All resources with the given tag will be published.</param>
         /// <param name="parameters">Parameters for publishing of resources.</param>
@@ -201,7 +201,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Publish resource by Id.
+        /// Publishes resource by Id.
         /// </summary>
         /// <param name="tag">Not used.</param>
         /// <param name="parameters">Parameters for publishing of resources.</param>
@@ -241,7 +241,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Update access mode for the resources selected by tag.
+        /// Updates access mode for the resources selected by tag.
         /// </summary>
         /// <param name="tag">Update all resources with the given tag (up to a maximum 
         /// of 100 matching original resources).</param>
@@ -253,7 +253,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Update access mode for the resources selected by prefix.
+        /// Updates access mode for the resources selected by prefix.
         /// </summary>
         /// <param name="prefix">Update all resources where the public ID starts with the given prefix (up to a maximum
         /// of 100 matching original resources).</param>
@@ -265,7 +265,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Update access mode for the resources selected by public ids.
+        /// Updates access mode for the resources selected by public ids.
         /// </summary>
         /// <param name="parameters">Parameters for updating of resources. Update all resources with the given public IDs 
         /// (array of up to 100 public_ids).</param>
@@ -276,7 +276,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Manage tag assignments.
+        /// Manages tag assignments.
         /// </summary>
         /// <param name="parameters">Parameters of tag management.</param>
         /// <returns>Results of tags management.</returns>
@@ -291,7 +291,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Manage context assignments.
+        /// Manages context assignments.
         /// </summary>
         /// <param name="parameters">Parameters of context management.</param>
         /// <returns>Results of contexts management.</returns>
@@ -303,7 +303,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete derived resources by the given transformation (should be specified in parameters).
+        /// Deletes derived resources by the given transformation (should be specified in parameters).
         /// </summary>
         /// <param name="parameters">Parameters to delete derived resources.</param>
         /// <returns>Parsed result of deletion derived resources.</returns>
@@ -319,7 +319,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Create archive and store it as a raw resource in your Cloudinary account.
+        /// Creates archive and stores it as a raw resource in your Cloudinary account.
         /// </summary>
         /// <param name="parameters">Parameters of new generated archive.</param>
         /// <returns>Parsed result of creating the archive.</returns>
@@ -335,7 +335,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Create a zip archive and store it as a raw resource in your Cloudinary account.
+        /// Creates a zip archive and stores it as a raw resource in your Cloudinary account.
         /// </summary>
         /// <param name="parameters">Parameters of the new generated zip archive.</param>
         /// <returns>Parsed result of creating the archive.</returns>
@@ -453,7 +453,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Uploads a resource to cloudinary.
+        /// Uploads a resource to Cloudinary.
         /// </summary>
         /// <param name="parameters">Parameters of uploading .</param>
         /// <returns>Results of uploading.</returns>
@@ -474,7 +474,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Uploads an image file to cloudinary.
+        /// Uploads an image file to Cloudinary.
         /// </summary>
         /// <param name="parameters">Parameters of image uploading .</param>
         /// <returns>Results of image uploading.</returns>
@@ -484,7 +484,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Uploads a video file to cloudinary.
+        /// Uploads a video file to Cloudinary.
         /// </summary>
         /// <param name="parameters">Parameters of video uploading.</param>
         /// <returns>Results of video uploading.</returns>
@@ -494,7 +494,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Uploads a file to cloudinary.
+        /// Uploads a file to Cloudinary.
         /// </summary>
         /// <param name="resourceType">Resource type ("image", "raw", "video", "auto").</param>
         /// <param name="parameters">Upload parameters.</param>
@@ -516,7 +516,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Gets list of folders in the root.
+        /// Gets a list of folders in the root.
         /// </summary>
         /// <returns>Parsed result of folders listing.</returns>
         public GetFoldersResult RootFolders()
@@ -525,7 +525,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get list of subfolders in a specified folder.
+        /// Gets a list of subfolders in a specified folder.
         /// </summary>
         /// <param name="folder">The folder name.</param>
         /// <returns>Parsed result of folders listing.</returns>
@@ -538,7 +538,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get the Cloudinary account usage details.
+        /// Gets the Cloudinary account usage details.
         /// </summary>
         /// <returns>The report on the status of your Cloudinary account usage details.</returns>
         public UsageResult GetUsage()
@@ -549,7 +549,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Uploads a file to cloudinary.
+        /// Uploads a file to Cloudinary.
         /// </summary>
         /// <param name="parameters">Parameters of file uploading.</param>
         /// <param name="type">The type ("raw" or "auto", last by default).</param>
@@ -571,7 +571,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Uploads large file to cloudinary by dividing it to chunks.
+        /// Uploads large file to Cloudinary by dividing it to chunks.
         /// </summary>
         /// <param name="parameters">Parameters of file uploading.</param>
         /// <param name="bufferSize">Chunk (buffer) size (20 MB by default).</param>
@@ -587,7 +587,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Uploads large raw file to cloudinary by dividing it to chunks.
+        /// Uploads large raw file to Cloudinary by dividing it to chunks.
         /// </summary>
         /// <param name="parameters">Parameters of file uploading.</param>
         /// <param name="bufferSize">Chunk (buffer) size (20 MB by default).</param>
@@ -598,7 +598,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Uploads large image file to cloudinary by dividing it to chunks.
+        /// Uploads large image file to Cloudinary by dividing it to chunks.
         /// </summary>
         /// <param name="parameters">Parameters of file uploading.</param>
         /// <param name="bufferSize">Chunk (buffer) size (20 MB by default).</param>
@@ -609,7 +609,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Uploads large video file to cloudinary by dividing it to chunks.
+        /// Uploads large video file to Cloudinary by dividing it to chunks.
         /// </summary>
         /// <param name="parameters">Parameters of file uploading.</param>
         /// <param name="bufferSize">Chunk (buffer) size (20 MB by default).</param>
@@ -620,7 +620,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Chunked resource upload.
+        /// Uploads large resources to Cloudinary by dividing it to chunks.
         /// </summary>
         /// <param name="parameters">Parameters of file uploading.</param>
         /// <param name="bufferSize">Chunk (buffer) size (20 MB by default).</param>
@@ -640,7 +640,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Chunked resource upload.
+        /// Uploads large resources to Cloudinary by dividing it to chunks.
         /// </summary>
         /// <typeparam name="T">The type of result of upload.</typeparam>
         /// <param name="parameters">Parameters of file uploading.</param>
@@ -722,9 +722,9 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete file from cloudinary.
+        /// Deletes file from Cloudinary.
         /// </summary>
-        /// <param name="parameters">Parameters for deletion of resource from cloudinary.</param>
+        /// <param name="parameters">Parameters for deletion of resource from Cloudinary.</param>
         /// <returns>Results of deletion.</returns>
         public DeletionResult Destroy(DeletionParams parameters)
         {
@@ -736,7 +736,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Generate an image of a given textual string.
+        /// Generates an image of a given textual string.
         /// </summary>
         /// <param name="text">Text to draw.</param>
         /// <returns>Results of generating an image of a given textual string.</returns>
@@ -746,7 +746,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Generate an image of a given textual string.
+        /// Generates an image of a given textual string.
         /// </summary>
         /// <param name="parameters">Parameters of generating an image of a given textual string.</param>
         /// <returns>Results of generating an image of a given textual string.</returns>
@@ -907,7 +907,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// List resources
+        /// Gets a list of resources.
         /// </summary>
         /// <param name="parameters">Parameters to list resources.</param>
         /// <returns>Parsed result of the resources listing.</returns>
@@ -942,7 +942,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// List all tags.
+        /// Gets a list of all tags.
         /// </summary>
         /// <returns>Parsed list of tags.</returns>
         public ListTagsResult ListTags()
@@ -951,7 +951,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Find all tags that start with the given prefix.
+        /// Finds all tags that start with the given prefix.
         /// </summary>
         /// <param name="prefix">The tag prefix.</param>
         /// <returns>Parsed list of tags.</returns>
@@ -961,7 +961,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// List tags.
+        /// Gets a list of tags.
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
@@ -978,7 +978,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// List transformations.
+        /// Gets a list of transformations.
         /// </summary>
         /// <returns>Parsed list of transformations details.</returns>
         public ListTransformsResult ListTransformations()
@@ -987,7 +987,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// List transformations.
+        /// Gets a list of transformations.
         /// </summary>
         /// <param name="parameters">Parameters of the request for a list of transformation.</param>
         /// <returns>Parsed list of transformations details.</returns>
@@ -1003,7 +1003,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get details of a single transformation by name.
+        /// Gets details of a single transformation by name.
         /// </summary>
         /// <param name="transform">Name of the transformation.</param>
         /// <returns>Parsed details of a single transformation.</returns>
@@ -1013,7 +1013,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get details of a single transformation.
+        /// Gets details of a single transformation.
         /// </summary>
         /// <param name="parameters">Parameters of the request of transformation details.</param>
         /// <returns>Parsed details of a single transformation.</returns>
@@ -1030,7 +1030,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Update details of an existing resource.
+        /// Updates details of an existing resource.
         /// </summary>
         /// <param name="publicId">The public ID of the resource to update.</param>
         /// <param name="moderationStatus">The image moderation status.</param>
@@ -1041,7 +1041,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Update details of an existing resource.
+        /// Updates details of an existing resource.
         /// </summary>
         /// <param name="parameters">Parameters to update details of an existing resource.</param>
         /// <returns>Parsed response of the detailed resource information.</returns>
@@ -1057,7 +1057,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get details of a single resource as well as all its derived resources by its public ID.
+        /// Gets details of a single resource as well as all its derived resources by its public ID.
         /// </summary>
         /// <param name="publicId">The public ID of the resource.</param>
         /// <returns>Parsed response with the detailed resource information.</returns>
@@ -1067,7 +1067,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get details of the requested resource as well as all its derived resources.
+        /// Gets details of the requested resource as well as all its derived resources.
         /// </summary>
         /// <param name="parameters">Parameters of the request of resource.</param>
         /// <returns>Parsed response with the detailed resource information.</returns>
@@ -1086,7 +1086,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete all derived resources with the given IDs.
+        /// Deletes all derived resources with the given IDs.
         /// </summary>
         /// <param name="ids">An array of up to 100 derived_resource_ids.</param>
         /// <returns>Parsed result of deletion derived resources.</returns>
@@ -1098,7 +1098,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete all derived resources with the given parameters.
+        /// Deletes all derived resources with the given parameters.
         /// </summary>
         /// <param name="parameters">Parameters to delete derived resources.</param>
         /// <returns>Parsed result of deletion derived resources.</returns>
@@ -1114,7 +1114,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete all resources of the given resource type and with the given public IDs.
+        /// Deletes all resources of the given resource type and with the given public IDs.
         /// </summary>
         ///<param name="type">The type of file to delete. Default: image.</param>
         /// <param name="publicIds">Array of up to 100 public_ids.</param>
@@ -1127,7 +1127,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete all resources with the given public IDs.
+        /// Deletes all resources with the given public IDs.
         /// </summary>
         /// <param name="publicIds">Array of up to 100 public_ids</param>
         /// <returns>Parsed result of deletion resources.</returns>
@@ -1139,7 +1139,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete all resources, including derived resources, where the public ID starts with the given prefix (up to
+        /// Deletes all resources, including derived resources, where the public ID starts with the given prefix (up to
         /// a maximum of 1000 original resources).
         /// </summary>
         /// <param name="prefix">Delete all resources where the public ID starts with the given prefix. </param>
@@ -1151,7 +1151,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete all resources, including derived resources, where the public ID starts with the given prefix (up to
+        /// Deletes all resources, including derived resources, where the public ID starts with the given prefix (up to
         /// a maximum of 1000 original resources).
         /// </summary>
         /// <param name="prefix">Delete all resources where the public ID starts with the given prefix. </param>
@@ -1165,7 +1165,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete resources by the given tag name.
+        /// Deletes resources by the given tag name.
         /// </summary>
         /// <param name="tag">
         /// Delete all resources (and their derivatives) with the given tag name (up to a maximum of 
@@ -1179,7 +1179,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete resources by the given tag name.
+        /// Deletes resources by the given tag name.
         /// </summary>
         /// <param name="tag">
         /// Delete all resources (and their derivatives) with the given tag name (up to a maximum of 
@@ -1195,7 +1195,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete all resources.
+        /// Deletes all resources.
         /// </summary>
         /// <returns>Parsed result of deletion resources.</returns>
         public DelResResult DeleteAllResources()
@@ -1205,7 +1205,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete all resources with conditions.
+        /// Deletes all resources with conditions.
         /// </summary>
         /// <param name="keepOriginal">If true, delete only the derived resources.</param>
         /// <param name="nextCursor">
@@ -1219,7 +1219,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete all resources with parameters.
+        /// Deletes all resources with parameters.
         /// </summary>
         /// <param name="parameters">Parameters for deletion resources.</param>
         /// <returns>Parsed result of deletion resources.</returns>
@@ -1239,7 +1239,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Restore a deleted resources by array of public ids.
+        /// Restores a deleted resources by array of public ids.
         /// </summary>
         /// <param name="publicIds">The public IDs of (deleted or existing) backed up resources to restore.</param>
         /// <returns>Parsed result of restoring resources.</returns>
@@ -1251,7 +1251,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Restore a deleted resources.
+        /// Restores a deleted resources.
         /// </summary>
         /// <param name="parameters">Parameters to restore a deleted resources.</param>
         /// <returns>Parsed result of restoring resources.</returns>
@@ -1314,7 +1314,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Create a new upload mapping folder and its template (URL).
+        /// Creates a new upload mapping folder and its template (URL).
         /// </summary>
         /// <param name="folder">Folder name to create.</param>
         /// <param name="template">Url template for mapping to the <paramref name="folder"/>.</param>
@@ -1340,7 +1340,7 @@ namespace CloudinaryDotNet
         /// </summary>
         /// <param name="folder">Existing Folder to be updated.</param>
         /// <param name="newTemplate">New value of Template Url.</param>
-        /// <returns>Parsed response after Upload mappings manipulation.</returns>
+        /// <returns>Parsed response after Upload mappings update.</returns>
         public UploadMappingResults UpdateUploadMapping(string folder, string newTemplate)
         {
             if (string.IsNullOrEmpty(folder))
@@ -1355,16 +1355,16 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete all upload mappings.
+        /// Deletes all upload mappings.
         /// </summary>
-        /// <returns>Parsed response after Upload mappings manipulation.</returns>
+        /// <returns>Parsed response after Upload mappings delete.</returns>
         public UploadMappingResults DeleteUploadMapping()
         {
             return DeleteUploadMapping(string.Empty);
         }
 
         /// <summary>
-        /// Delete upload mapping by <paramref name="folder"/> name.
+        /// Deletes upload mapping by <paramref name="folder"/> name.
         /// </summary>
         /// <param name="folder">Folder name.</param>
         /// <returns>Parsed response after Upload mappings manipulation.</returns>
@@ -1381,7 +1381,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Update cloudinary transformation resource.
+        /// Updates Cloudinary transformation resource.
         /// </summary>
         /// <param name="parameters">Parameters for transformation update.</param>
         /// <returns>Parsed response after transformation manipulation.</returns>
@@ -1396,7 +1396,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Create cloudinary transformation resource.
+        /// Creates Cloudinary transformation resource.
         /// </summary>
         /// <param name="parameters">Parameters of the new transformation.</param>
         /// <returns>Parsed response after transformation manipulation.</returns>
@@ -1411,7 +1411,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Delete transformation by name.
+        /// Deletes transformation by name.
         /// </summary>
         /// <param name="transformName">The name of transformation to delete.</param>
         /// <returns>Parsed response after transformation manipulation.</returns>
@@ -1426,7 +1426,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Eagerly generate sprites.
+        /// Eagerly generates sprites.
         /// </summary>
         /// <param name="parameters">Parameters for sprite generation.</param>
         /// <returns>Parsed response with detailed information about the created sprite.</returns>
@@ -1440,7 +1440,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Create a single animated GIF file from a group of images.
+        /// Creates a single animated GIF file from a group of images.
         /// </summary>
         /// <param name="parameters">Parameters of Multi operation.</param>
         /// <returns>Parsed response with detailed information about the created animated GIF.</returns>
@@ -1454,7 +1454,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Explode multipage document to single pages.
+        /// Explodes multipage document to single pages.
         /// </summary>
         /// <param name="parameters">Parameters of explosion operation.</param>
         /// <returns>Parsed response after a call of Explode method.</returns>
@@ -1472,7 +1472,7 @@ namespace CloudinaryDotNet
         /// </summary>
         /// <param name="directUpload">Whether to reference additional scripts that are necessary for uploading files directly from browser.</param>
         /// <param name="dir">Override location of js files (default: ~/Scripts).</param>
-        /// <returns>HTML script tag with cloudinary JS configuration.</returns>
+        /// <returns>HTML script tag with Cloudinary JS configuration.</returns>
 #if NET40
         public System.Web.IHtmlString GetCloudinaryJsConfig(bool directUpload = false, string dir = "")
 #else

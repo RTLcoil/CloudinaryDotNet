@@ -6,7 +6,7 @@
     public class CSource
     {
         /// <summary>
-        /// Instantiate the <see cref="CSource"/> object with a source.
+        /// Instantiates the <see cref="CSource"/> object with a source.
         /// </summary>
         /// <param name="source">Source part of the Url.</param>
         public CSource(string source)

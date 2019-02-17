@@ -9,9 +9,9 @@ namespace CloudinaryDotNet
     public abstract class BaseLayer : Core.ICloneable
     {
         /// <summary>
-        /// Returns a copy of this object.
+        /// Creates a new object that is a copy of the current instance.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A new object that is a copy of this instance.</returns>
         public abstract object Clone();
     }
 
@@ -41,8 +41,9 @@ namespace CloudinaryDotNet
         protected string m_format;
 
         /// <summary>
-        /// The type of the resource. Valid values: image, raw, and video.
+        /// Sets the type of resource. Valid values: image, raw, and video.
         /// </summary>
+        /// <returns>The instance of Layer object with set parameter.</returns>
         public T ResourceType(string resourceType)
         {
             m_resourceType = resourceType;
@@ -50,8 +51,9 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// The specific type of the asset. Valid values: upload, private and authenticated. Default: upload.
+        /// Sets the specific type of asset. Valid values: upload, private and authenticated. Default: upload.
         /// </summary>
+        /// <returns>The instance of Layer object with set parameter.</returns>
         public T Type(string type)
         {
             this.m_type = type;
@@ -59,9 +61,10 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Set the public ID of a previously uploaded PNG image to add as overlay.
+        /// Sets the public ID of previously uploaded PNG image to add as overlay.
         /// </summary>
         /// <param name="publicId">Public ID.</param>
+        /// <returns>The instance of Layer object with set parameter.</returns>
         public T PublicId(string publicId)
         {
             this.m_publicId = publicId.Replace('/', ':');
@@ -69,10 +72,10 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Set a 
+        /// Sets a format of asset.
         /// </summary>
-        /// <param name="format"></param>
-        /// <returns></returns>
+        /// <param name="format">Asset format.</param>
+        /// <returns>The instance of Layer object with set parameter.</returns>
         public T Format(string format)
         {
             this.m_format = format;
@@ -80,7 +83,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get an additional parameters for the layer.
+        /// Gets an additional parameters for the layer.
         /// </summary>
         public virtual string AdditionalParams()
         {
@@ -88,9 +91,9 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Get this layer represented as string.
+        /// Gets this layer represented as string.
         /// </summary>
-        /// <returns>The layer represented as string.</returns>
+        /// <returns>The Layer represented as string.</returns>
         public override string ToString()
         {
             List<string> components = new List<string>();
@@ -134,7 +137,7 @@ namespace CloudinaryDotNet
         #region ICloneable
 
         /// <summary>
-        /// Create a shallow copy of the current object.
+        /// Creates a shallow copy of the current object.
         /// </summary>
         /// <returns>A new instance of the current object.</returns>
         public override object Clone() => MemberwiseClone();

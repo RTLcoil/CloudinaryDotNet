@@ -9,7 +9,7 @@ namespace CloudinaryDotNet.Actions
     public class UpdateTransformParams : BaseParams
     {
         /// <summary>
-        /// Instantiate the <see cref="UpdateTransformParams"/> object.
+        /// Instantiates the <see cref="UpdateTransformParams"/> object.
         /// </summary>
         public UpdateTransformParams()
         {

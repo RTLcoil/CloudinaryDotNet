@@ -74,7 +74,7 @@ namespace CloudinaryDotNet
         protected string m_lineSpacing;
 
         /// <summary>
-        /// Default parameterless constructor. Instantiate the <see cref="TextLayer"/> object.
+        /// Default parameterless constructor. Instantiates the <see cref="TextLayer"/> object.
         /// </summary>
         public TextLayer()
         {
@@ -83,7 +83,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Instantiate the <see cref="TextLayer"/> object with text.
+        /// Instantiates the <see cref="TextLayer"/> object with text.
         /// </summary>
         /// <param name="text">The text to generate an image for.</param>
         public TextLayer(string text) : this()

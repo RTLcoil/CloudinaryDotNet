@@ -9,7 +9,7 @@ namespace CloudinaryDotNet.Actions
     public class TextParams : BaseParams
     {
         /// <summary>
-        /// Instantiate the <see cref="TextParams"/> object.
+        /// Instantiates the <see cref="TextParams"/> object.
         /// </summary>
         public TextParams()
         {

@@ -6,7 +6,7 @@ using System.Text;
 namespace CloudinaryDotNet
 {
     /// <summary>
-    /// Checksum generator using CRC32 algorythm.
+    /// Checksum generator using CRC32 algorithm.
     /// </summary>
     public static class Crc32
     {

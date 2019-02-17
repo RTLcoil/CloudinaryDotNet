@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Parsed response after transformation manipulation.
+    /// Response of transformation update.
     /// </summary>
     [DataContract]
     public class UpdateTransformResult : BaseResult

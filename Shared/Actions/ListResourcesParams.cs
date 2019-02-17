@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Parameters to list resources.
+    /// Parameters of list resources request.
     /// </summary>
     public class ListResourcesParams : BaseParams
     {
@@ -92,7 +92,7 @@ namespace CloudinaryDotNet.Actions
     public class ListSpecificResourcesParams : ListResourcesParams
     {
         /// <summary>
-        /// Instantiate the <see cref="ListSpecificResourcesParams"/> object.
+        /// Instantiates the <see cref="ListSpecificResourcesParams"/> object.
         /// </summary>
         public ListSpecificResourcesParams()
         {

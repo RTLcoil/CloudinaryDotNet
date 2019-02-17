@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace CloudinaryDotNet.Actions
 {
     /// <summary>
-    /// Parsed results of restoring resources.
+    /// Parsed results of resources restore.
     /// </summary>
     [DataContract]
     public class RestoreResult : BaseResult

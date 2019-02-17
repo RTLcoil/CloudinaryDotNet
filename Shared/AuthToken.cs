@@ -67,7 +67,7 @@ namespace CloudinaryDotNet
         private bool isNullToken = false;
 
         /// <summary>
-        /// Instantiate the <see cref="AuthToken"/> object.
+        /// Instantiates the <see cref="AuthToken"/> object.
         /// </summary>
         public AuthToken()
         {
@@ -75,7 +75,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Instantiate the <see cref="AuthToken"/> object.
+        /// Instantiates the <see cref="AuthToken"/> object.
         /// </summary>
         /// <param name="key">The encryption key received from Cloudinary to sign token with.</param>
         public AuthToken(string key)

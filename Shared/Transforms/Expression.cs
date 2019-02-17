@@ -15,12 +15,12 @@ namespace CloudinaryDotNet
         public const string VARIABLE_NAME_REGEX = "^\\$[a-zA-Z][a-zA-Z0-9]*$";
 
         /// <summary>
-        /// Default parameterless constructor. Instantiate the <see cref="Expression"/> object.
+        /// Default parameterless constructor. Instantiates the <see cref="Expression"/> object.
         /// </summary>
         public Expression() { }
 
         /// <summary>
-        /// Instantiate the <see cref="Expression"/> object with name.
+        /// Instantiates the <see cref="Expression"/> object with name.
         /// </summary>
         public Expression(string name) : this()
         {

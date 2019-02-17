@@ -14,7 +14,7 @@ namespace CloudinaryDotNet.Actions
         string m_type = "upload";
 
         /// <summary>
-        /// Instantiate the <see cref="UpdateResourceAccessModeParams"/> object.
+        /// Instantiates the <see cref="UpdateResourceAccessModeParams"/> object.
         /// </summary>
         public UpdateResourceAccessModeParams() { }
 

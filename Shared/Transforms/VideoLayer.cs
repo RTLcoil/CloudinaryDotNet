@@ -9,7 +9,7 @@ namespace CloudinaryDotNet
     public class VideoLayer : BaseLayer<VideoLayer>
     {
         /// <summary>
-        /// Instantiate the <see cref="VideoLayer"/> object.
+        /// Instantiates the <see cref="VideoLayer"/> object.
         /// </summary>
         public VideoLayer()
         {
@@ -17,7 +17,7 @@ namespace CloudinaryDotNet
         }
 
         /// <summary>
-        /// Instantiate the <see cref="VideoLayer"/> object with public ID.
+        /// Instantiates the <see cref="VideoLayer"/> object with public ID.
         /// </summary>
         /// <param name="publicId">Public ID of a previously uploaded PNG image.</param>
         public VideoLayer(string publicId) : this()

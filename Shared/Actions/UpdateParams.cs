@@ -12,7 +12,7 @@ namespace CloudinaryDotNet.Actions
     public class UpdateParams : BaseParams
     {
         /// <summary>
-        /// Instantiate the <see cref="UpdateParams"/> object with public ID.
+        /// Instantiates the <see cref="UpdateParams"/> object with public ID.
         /// </summary>
         /// <param name="publicId">The public ID of the resource to update.</param>
         public UpdateParams(string publicId)

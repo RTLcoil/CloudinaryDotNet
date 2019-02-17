@@ -17,7 +17,7 @@ namespace CloudinaryDotNet
         private const string FORMAT = "format";
 
         /// <summary>
-        /// Instantiate the <see cref="ResponsiveBreakpoint"/> object.
+        /// Instantiates the <see cref="ResponsiveBreakpoint"/> object.
         /// </summary>
         public ResponsiveBreakpoint()
         {

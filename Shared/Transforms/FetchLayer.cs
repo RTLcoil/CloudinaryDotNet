@@ -14,7 +14,7 @@ namespace CloudinaryDotNet
         protected string m_url;
 
         /// <summary>
-        /// Default parameterless constructor. Instantiate the <see cref="FetchLayer"/> object.
+        /// Default parameterless constructor. Instantiates the <see cref="FetchLayer"/> object.
         /// </summary>
         public FetchLayer()
         {
