@@ -87,6 +87,11 @@ namespace CloudinaryDotNet
             return Add("audio_frequency", frequency);
         }
 
+        public Transformation AudioFrequency(AudioFrequency frequency)
+        {
+            return Add("audio_frequency", ApiShared.GetCloudinaryParam(frequency));
+        }
+
         public Transformation VideoSampling(string value)
         {
             return Add("video_sampling", value);

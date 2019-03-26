@@ -25,5 +25,11 @@ namespace CloudinaryDotNet.Actions
 
         [DataMember(Name = "used")]
         public bool Used { get; protected set; }
+
+        /// <summary>
+        /// Indicates whether the transformation is a named transformation.
+        /// </summary>
+        [DataMember(Name = "named")]
+        public bool Named { get; protected set; }
     }
 }

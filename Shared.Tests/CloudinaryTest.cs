@@ -2104,6 +2104,7 @@ namespace CloudinaryDotNet.Test
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Transformations);
             TransformDesc td = result.Transformations.Where(t => t.Name == m_simpleTransformationAsString).First();
+			Assert.IsFalse(td.Named);
             Assert.IsTrue(td.Used);
         }
 
@@ -2186,6 +2187,7 @@ namespace CloudinaryDotNet.Test
             var getResult = m_cloudinary.GetTransform(transformationName);
 
             Assert.IsNotNull(getResult.Info);
+			Assert.IsTrue(getResult.Named);
             Assert.AreEqual(updateParams.UnsafeTransform.Generate(), new Transformation(getResult.Info).Generate());
         }
 
@@ -2441,13 +2443,20 @@ namespace CloudinaryDotNet.Test
             uploadParams.Transformation = m_simpleTransformation;
             m_cloudinary.Upload(uploadParams);
 
-            SpriteParams sprite = new SpriteParams(spriteTag);
+			SpriteParams sprite = new SpriteParams(spriteTag)
+			{
+				Format = FILE_FORMAT_JPG
+			};
+
             SpriteResult result = m_cloudinary.MakeSprite(sprite);
             AddCreatedPublicId(StorageType.sprite, result.PublicId);
 
             Assert.NotNull(result);
             Assert.NotNull(result.ImageInfos);
             Assert.AreEqual(3, result.ImageInfos.Count);
+
+			StringAssert.EndsWith(FILE_FORMAT_JPG, result.ImageUri.ToString());
+
             Assert.Contains(publicId1, result.ImageInfos.Keys);
             Assert.Contains(publicId2, result.ImageInfos.Keys);
             Assert.Contains(publicId3, result.ImageInfos.Keys);

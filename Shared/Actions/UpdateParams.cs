@@ -81,6 +81,11 @@ namespace CloudinaryDotNet.Actions
         public string QualityOveride { get; set; }
 
         /// <summary>
+        /// Override the default quality defined in the account level for a specific resource.
+        /// </summary>
+        public string QualityOverride { get; set; }
+
+        /// <summary>
         /// Gets or sets the moderation status.
         /// </summary>
         /// <value>
