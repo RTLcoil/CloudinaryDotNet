@@ -12,6 +12,7 @@ namespace CloudinaryDotNet
     public class AuthToken
     {
         public static string AUTH_TOKEN_NAME = "__cld_token__";
+        public static string UNSAFE_RE = "[ \"#%&\\'\\/:;<=>?@\\[\\\\\\]^`{\\|}~]";
 
         public static AuthToken NULL_AUTH_TOKEN = new AuthToken().SetNull();
 
@@ -159,28 +160,9 @@ namespace CloudinaryDotNet
             }
         }
 
-        private string EscapeUrl(string url)
-        {
-            return Uri.EscapeDataString(url);
-        }
-
         protected string EscapeToLower(string url)
         {
-            string escaped = string.Empty;
-
-            var encodedUrl = Utils.EncodedUrl(url);
-            StringBuilder sb = new StringBuilder(encodedUrl);
-            string result = sb.ToString();
-            string regex = "%..";
-            Regex r = new Regex(regex, RegexOptions.Compiled);
-            foreach (Match ItemMatch in r.Matches(sb.ToString()))
-            {
-                string buf = sb.ToString().Substring(ItemMatch.Index, ItemMatch.Length).ToLower();
-                sb.Remove(ItemMatch.Index, ItemMatch.Length);
-                sb.Insert(ItemMatch.Index, buf);
-            }
-
-            return sb.ToString();
+            return Utils.EscapeUrlUnsafe(url, UNSAFE_RE, false);
         }
 
         private string Digest(string message)

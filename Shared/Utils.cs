@@ -77,6 +77,26 @@ namespace CloudinaryDotNet
             return Convert.ToBase64String(bytes).Replace('+', '-').Replace('/', '_');
         }
 
+        /// <summary>
+        /// Escape Url with a custom set of escaped characters.
+        /// </summary>
+        /// <param name="url">Url to escape.</param>
+        /// <param name="reUnsafe">Regular expression with characters to escape.</param>
+        /// <param name="toUpper">Whether to return escaped characters in upper case. Default: true.</param>
+        internal static string EscapeUrlUnsafe(string url, string reUnsafe = "([^a-zA-Z0-9_.\\-\\/:]+)", bool toUpper = true)
+        {
+            Regex r = new Regex(reUnsafe, RegexOptions.Compiled | RegexOptions.RightToLeft);
+            var sbUrl = new StringBuilder(url);    
+            foreach (Match itemMatch in r.Matches(sbUrl.ToString()))
+            {
+                var escapedItem = string.Join("%", itemMatch.Value.Select(c => Convert.ToByte(c).ToString("x2")));
+                sbUrl.Remove(itemMatch.Index, itemMatch.Length);
+                sbUrl.Insert(itemMatch.Index, "%" + (toUpper ? escapedItem.ToUpper() : escapedItem.ToLower()));
+            }
+            return sbUrl.ToString();
+        }
+
+
         internal static byte[] ComputeHash(string s)
         {
             using (var sha1 = SHA1.Create())
