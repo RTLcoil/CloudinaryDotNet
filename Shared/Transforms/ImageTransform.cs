@@ -107,8 +107,12 @@ namespace CloudinaryDotNet
         public Transformation DefaultImage(string value) { return Add("default_image", value); }
 
         /// <summary>
-        /// Decides which part of the image to keep while 'crop', 'pad' and 'fill' crop modes are used. For overlays, this decides where to place the overlay.
+        /// Decides which part of the image to keep while 'crop', 'pad' and 'fill' crop modes are used. For overlays,
+        /// this decides where to place the overlay.
         /// </summary>
+        /// <param name="value">
+        /// The gravity value. Use static class <see cref="CloudinaryDotNet.Gravity"/> for values.
+        /// </param>
         public Transformation Gravity(string value) { return Add("gravity", value); }
         public Transformation Gravity(string value, string param) { return Gravity($"{value}:{param}"); }
         

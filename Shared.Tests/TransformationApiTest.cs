@@ -141,22 +141,22 @@ namespace CloudinaryDotNet.Test
         [Test]
         public void TestOcrGravityTransformation()
         {
-            var transformation = new Transformation().Gravity("west");
+            var transformation = new Transformation().Gravity(Gravity.West);
             Assert.AreEqual("g_west", transformation.ToString());
 
-            transformation = new Transformation().Gravity("auto");
+            transformation = new Transformation().Gravity(Gravity.Auto);
             Assert.AreEqual("g_auto", transformation.ToString());
             
-            transformation = new Transformation().Gravity("auto:good");
+            transformation = new Transformation().Gravity(Gravity.Auto, "good");
             Assert.AreEqual("g_auto:good", transformation.ToString());
 
-            transformation = new Transformation().Gravity("ocr_text");
+            transformation = new Transformation().Gravity(Gravity.OcrText);
             Assert.AreEqual("g_ocr_text", transformation.ToString());
 
-            transformation = new Transformation().Gravity("auto", "ocr_text");
+            transformation = new Transformation().Gravity(Gravity.Auto, "ocr_text");
             Assert.AreEqual("g_auto:ocr_text", transformation.ToString());
 
-            transformation = new Transformation().Gravity("ocr_text", "adv_ocr");
+            transformation = new Transformation().Gravity(Gravity.OcrText, "adv_ocr");
             Assert.AreEqual("g_ocr_text:adv_ocr", transformation.ToString());
         }
 
