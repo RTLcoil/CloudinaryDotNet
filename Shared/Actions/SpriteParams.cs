@@ -25,6 +25,11 @@ namespace CloudinaryDotNet.Actions
 
         public Transformation Transformation { get; set; }
 
+		/// <summary>
+		/// An optional format to convert the sprite before saving it in your Cloudinary account. Default: png.
+		/// </summary>
+		public string Format { get; set; }
+
         public string NotificationUrl { get; set; }
 
         public bool Async { get; set; }
@@ -53,6 +58,9 @@ namespace CloudinaryDotNet.Actions
 
             if (Transformation != null)
                 AddParam(dict, "transformation", Transformation.Generate());
+
+			if (!string.IsNullOrEmpty(Format))
+				AddParam(dict, "format", Format);
 
             return dict;
         }
