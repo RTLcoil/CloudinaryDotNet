@@ -2104,6 +2104,7 @@ namespace CloudinaryDotNet.Test
             Assert.IsNotNull(result);
             Assert.IsNotNull(result.Transformations);
             TransformDesc td = result.Transformations.Where(t => t.Name == m_simpleTransformationAsString).First();
+			Assert.IsFalse(td.Named);
             Assert.IsTrue(td.Used);
         }
 
@@ -2186,6 +2187,7 @@ namespace CloudinaryDotNet.Test
             var getResult = m_cloudinary.GetTransform(transformationName);
 
             Assert.IsNotNull(getResult.Info);
+			Assert.IsTrue(getResult.Named);
             Assert.AreEqual(updateParams.UnsafeTransform.Generate(), new Transformation(getResult.Info).Generate());
         }
 
