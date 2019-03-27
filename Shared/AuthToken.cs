@@ -18,11 +18,9 @@ namespace CloudinaryDotNet
         public string tokenName = AUTH_TOKEN_NAME;
         public string key;
         public long startTime;
-        public long endTime;
         public long expiration;
         public string ip;
         public string acl;
-        public long window;
         public long duration;
         private bool isNullToken = false;
 
