@@ -87,6 +87,15 @@ namespace CloudinaryDotNet
             return Add("audio_frequency", frequency);
         }
 
+        /// <summary>
+        /// Control audio sample frequency.
+        /// </summary>
+        /// <param name="frequency">An enum value, that represents frequency value in Hz.</param>
+        public Transformation AudioFrequency(AudioFrequency frequency)
+        {
+            return Add("audio_frequency", ApiShared.GetCloudinaryParam(frequency));
+        }
+
         public Transformation VideoSampling(string value)
         {
             return Add("video_sampling", value);
